@@ -116,8 +116,6 @@
 
         zip = JSON.parse(zip);
 
-        console.log(zip);
-
         if (zip) {
 
             $('.app h4').text(zip.city + ', ' + zip.state);
@@ -126,9 +124,14 @@
             $('#state').val(zip.state);
             $('#zip').val(zip.zip_code);
 
-            Materialize.updateTextFields();
-
+        }else{
+            $('.app h4').text('');
+            $('#city').val('');
+            $('#state').val('');
+            $('#zip').val('');
         }
+
+        Materialize.updateTextFields();
 
     }
 
