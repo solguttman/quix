@@ -1,0 +1,151 @@
+(function($) {
+    $(function() {
+
+        var cache = {};
+
+        $('.button-collapse').sideNav();
+        $('select').material_select();
+        $('.datepicker').pickadate({
+            min: true
+        });
+        $('.timepicker').pickatime({
+            container :'body'
+        });
+        $('#date_root').appendTo('body');
+        $('#file').uploader();
+        $('.modal').modal();
+
+        $(document).on("keyup", "input[name='zipcode']", function() {
+
+            var zipcode = $(this).val().substring(0, 5),
+                clientKey = 'js-BUkZEcF2wl58RebWJ6ABLSj5aQ3gxXrVzeRpl3ye32O7oXxjsMw8eAt28ztlO1su',
+                url = "https://www.zipcodeapi.com/rest/" + clientKey + "/info.json/" + zipcode + "/radians";
+
+            if (zipcode.length === 5 && /^[0-9]+$/.test(zipcode)) {
+
+                $(this).blur();
+                $('.zip-form .next').removeClass('disabled');
+
+                if (zipcode in cache) {
+
+                    handleResp(cache[zipcode]);
+
+                } else {
+
+                    // Make AJAX request
+                    $.get(url).done(function(data) {
+                        handleResp(data);
+
+                        // Store in cache
+                        cache[zipcode] = data;
+                    }).fail(function(data) {
+                        if (data.responseText && (json = $.parseJSON(data.responseText))) {
+                            // Store in cache
+                            cache[zipcode] = json;
+                        }
+                    });
+
+                }
+
+            }else{
+                $('.zip-form .next').addClass('disabled');
+            }
+
+        }).on('keyup change', '.name-form input', function(){
+
+            var name = $('#name').val(),
+                email = $('#email').val(),
+                phone = $('#phone').val();
+
+            if(name && email && phone){
+                $('.name-form .next').removeClass('disabled');
+            }else{
+                $('.name-form .next').addClass('disabled');
+            }
+
+        }).on('keyup change', '.address-form input', function(){
+
+            var address = $('#address').val(),
+                city = $('#city').val(),
+                state = $('#state').val(),
+                zip = $('#zip').val();
+
+            if(address && city && state && zip){
+                $('.address-form .next').removeClass('disabled');
+            }else{
+                $('.address-form .next').addClass('disabled');
+            }
+
+        }).on('keyup change', '.description-form textarea', function(){
+
+            var description = $('#description').val();
+
+            if(description){
+                $('.description-form .next').removeClass('disabled');
+            }else{
+                $('.description-form .next').addClass('disabled');
+            }
+
+        }).on('click', '[data-slide]', function(){
+            var left = $(window).width() * $(this).data('slide');
+            $('.app-inner').css('transform', 'translateX(-' + left + 'px)');
+
+            return false;
+        }).on('click', '.checkout', showRequest);
+
+        $('#date, #time').on('keyup change', function(){
+
+            var date = $('#date').val(),
+                time = $('#time').val();
+
+            if(date && time){
+                $('.date-form .next').removeClass('disabled');
+            }else{
+                $('.date-form .next').addClass('disabled');
+            }
+
+        });
+
+    }); // end of document ready
+
+    function handleResp(zip) {
+
+        var left = $(window).width();
+
+        $('.app h4').text(zip.city + ', ' + zip.state);
+        $('.app-inner').css('transform', 'translateX(-' + left + 'px)');
+        $('#city').val(zip.city);
+        $('#state').val(zip.state);
+        $('#zip').val(zip.zip_code);
+
+        Materialize.updateTextFields();
+
+    }
+
+    function showRequest(){
+        var container = $('.review-request');
+        container.empty();
+
+        container.append('<div><strong>Name</strong><br/>'+ $('#name').val() +'<br/></div>');
+        container.append('<div><strong>Email</strong><br/>'+ $('#email').val() +'<br/></div>');
+        container.append('<div><strong>Phone</strong><br/>'+ $('#phone').val() + ' - ' + $('#phoneType').val() +'<br/></div>');
+
+        container.append('<div><strong>Address</strong><br/>'+ $('#address').val() +'<br/></div>');
+        container.append('<div><strong>City</strong><br/>'+ $('#city').val() +'<br/></div>');
+        container.append('<div><strong>State</strong><br/>'+ $('#state').val() +'<br/></div>');
+        container.append('<div><strong>Zip</strong><br/>'+ $('#zip').val() +'<br/></div>');
+
+        container.append('<div><strong>Date</strong><br/>'+ $('#date').val() +'<br/></div>');
+        container.append('<div><strong>Time</strong><br/>'+ $('#time').val() +'<br/></div>');
+
+        container.append('<div><strong>Description</strong><br/>'+ $('#description').val() +'<br/></div>');
+
+        if($('#file').val()){
+            container.append('<div><strong>File</strong><br/><a href="'+ Uploader.domain + $('#file').val() +'">Link</a><br/></div>');
+        }
+
+        return false;
+
+    }
+
+})(jQuery); // end of jQuery name space
