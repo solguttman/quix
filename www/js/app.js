@@ -17,9 +17,7 @@
 
         $(document).on("keyup", "input[name='zipcode']", function() {
 
-            var zipcode = $(this).val().substring(0, 5),
-                clientKey = 'js-BUkZEcF2wl58RebWJ6ABLSj5aQ3gxXrVzeRpl3ye32O7oXxjsMw8eAt28ztlO1su',
-                url = "https://www.zipcodeapi.com/rest/" + clientKey + "/info.json/" + zipcode + "/radians";
+            var zipcode = $(this).val().substring(0, 5);
 
             if (zipcode.length === 5 && /^[0-9]+$/.test(zipcode)) {
 
@@ -33,7 +31,7 @@
                 } else {
 
                     // Make AJAX request
-                    $.get(url).done(function(data) {
+                    $.get('https://lab.evelthost.com/quix/api?zip=' + zipcode).done(function(data) {
                         handleResp(data);
 
                         // Store in cache
