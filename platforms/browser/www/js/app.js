@@ -17,7 +17,7 @@
 
         setTimeout(function(){
             $('.loader').fadeOut(300);
-        },500);
+        },1000);
 
         $(document).on("keyup", "input[name='zipcode']", function() {
 
@@ -34,17 +34,25 @@
 
                 } else {
 
+                    $('.loader').fadeIn(300);
+
                     // Make AJAX request
                     $.get('https://lab.evelthost.com/quix/api/index.php?zip=' + zipcode).done(function(data) {
                         handleResp(data);
 
                         // Store in cache
                         cache[zipcode] = data;
+                        setTimeout(function(){
+                            $('.loader').fadeOut(300);
+                        },300);
                     }).fail(function(data) {
                         if (data.responseText && (json = $.parseJSON(data.responseText))) {
                             // Store in cache
                             cache[zipcode] = json;
                         }
+                        setTimeout(function(){
+                            $('.loader').fadeOut(300);
+                        },300);
                     });
 
                 }

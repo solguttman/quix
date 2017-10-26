@@ -40,7 +40,7 @@ var app = {
 
         setTimeout(function(){
             $('.loader').fadeOut(300);
-        },500);
+        },1000);
 
         console.log('Received Event: ' + id);
     }
