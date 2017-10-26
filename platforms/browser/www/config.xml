@@ -8,10 +8,10 @@
     </feature>
     <name>quixApp</name>
     <description>
-        Hello World sample application that responds to the deviceready event.
+        Quix.
     </description>
-    <author email="support@phonegap.com" href="http://phonegap.com">
-        PhoneGap Team
+    <author email="support@evelt.com" href="https://evelt.com">
+        Evelt Team
     </author>
     <content src="index.html" />
     <access origin="*" />

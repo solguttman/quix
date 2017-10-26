@@ -15,11 +15,13 @@
         $('#file').uploader();
         $('.modal').modal();
 
+        setTimeout(function(){
+            $('.loader').fadeOut(300);
+        },500);
+
         $(document).on("keyup", "input[name='zipcode']", function() {
 
-            var zipcode = $(this).val().substring(0, 5),
-                clientKey = 'js-BUkZEcF2wl58RebWJ6ABLSj5aQ3gxXrVzeRpl3ye32O7oXxjsMw8eAt28ztlO1su',
-                url = "https://www.zipcodeapi.com/rest/" + clientKey + "/info.json/" + zipcode + "/radians";
+            var zipcode = $(this).val().substring(0, 5);
 
             if (zipcode.length === 5 && /^[0-9]+$/.test(zipcode)) {
 
@@ -33,7 +35,7 @@
                 } else {
 
                     // Make AJAX request
-                    $.get(url).done(function(data) {
+                    $.get('https://lab.evelthost.com/quix/api/index.php?zip=' + zipcode).done(function(data) {
                         handleResp(data);
 
                         // Store in cache
@@ -51,7 +53,7 @@
                 $('.zip-form .next').addClass('disabled');
             }
 
-        }).on('keyup change', '.name-form input', function(){
+        }).on('keyup change input', '.name-form input', function(){
 
             var name = $('#name').val(),
                 email = $('#email').val(),
@@ -63,7 +65,7 @@
                 $('.name-form .next').addClass('disabled');
             }
 
-        }).on('keyup change', '.address-form input', function(){
+        }).on('keyup change input', '.address-form input', function(){
 
             var address = $('#address').val(),
                 city = $('#city').val(),
@@ -76,7 +78,7 @@
                 $('.address-form .next').addClass('disabled');
             }
 
-        }).on('keyup change', '.description-form textarea', function(){
+        }).on('keyup change input', '.description-form textarea', function(){
 
             var description = $('#description').val();
 
@@ -93,7 +95,7 @@
             return false;
         }).on('click', '.checkout', showRequest);
 
-        $('#date, #time').on('keyup change', function(){
+        $('#date, #time').on('keyup change input', function(){
 
             var date = $('#date').val(),
                 time = $('#time').val();
@@ -112,13 +114,21 @@
 
         var left = $(window).width();
 
-        $('.app h4').text(zip.city + ', ' + zip.state);
-        $('.app-inner').css('transform', 'translateX(-' + left + 'px)');
-        $('#city').val(zip.city);
-        $('#state').val(zip.state);
-        $('#zip').val(zip.zip_code);
+        zip = JSON.parse(zip);
 
-        Materialize.updateTextFields();
+        console.log(zip);
+
+        if (zip) {
+
+            $('.app h4').text(zip.city + ', ' + zip.state);
+            $('.app-inner').css('transform', 'translateX(-' + left + 'px)');
+            $('#city').val(zip.city);
+            $('#state').val(zip.state);
+            $('#zip').val(zip.zip_code);
+
+            Materialize.updateTextFields();
+
+        }
 
     }
 
