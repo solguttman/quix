@@ -122,7 +122,9 @@
 
         var left = $(window).width();
 
-        zip = JSON.parse(zip);
+        console.log(zip);
+
+        zip = zip[0] === '{' ? JSON.parse(zip) : false;
 
         if (zip) {
 
