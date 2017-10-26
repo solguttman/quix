@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget id="com.phonegap.helloworld" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
-    <name>quixApp</name>
+    <name>Quix</name>
     <description>
         Quix.
     </description>
@@ -79,7 +79,7 @@
 		<splash height="960" platform="ios" src="res/screens/ios/Default@2x~iphone.png" width="640" />
 		<splash height="480" platform="ios" src="res/screens/ios/Default~iphone.png" width="320" />
 	</platform>
-
+	<icon src="www/icon.png" />
     <access origin="*" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
