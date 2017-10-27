@@ -46,10 +46,6 @@
                             $('.loader').fadeOut(300);
                         },300);
                     }).fail(function(data) {
-                        if (data.responseText && (json = $.parseJSON(data.responseText))) {
-                            // Store in cache
-                            cache[zipcode] = json;
-                        }
                         setTimeout(function(){
                             $('.loader').fadeOut(300);
                         },300);
@@ -101,7 +97,8 @@
             $('.app-inner').css('transform', 'translateX(-' + left + 'px)');
 
             return false;
-        }).on('click', '.checkout', showRequest);
+        }).on('click', '.checkout', showRequest)
+        .on('click', '.send-request', sendRequst);
 
         $('#date, #time').on('keyup change input', function(){
 
@@ -169,6 +166,16 @@
 
         return false;
 
+    }
+
+    function sendRequst(){
+        $.post('https://lab.evelthost.com/quix/api/send.php', {
+            name : $('#name').val()
+        }).done(function(data) {
+            console.log(data);
+        }).fail(function(data) {
+            console.log(data);
+        });
     }
 
 })(jQuery); // end of jQuery name space
