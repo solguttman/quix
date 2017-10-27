@@ -12,8 +12,13 @@
             container :'body'
         });
         $('#date_root').appendTo('body');
-        $('#file').uploader();
         $('.modal').modal();
+
+        $('#file').uploader();
+
+        $('#file').on('file', function(e, data){
+            $('#file').val(data.domain + data.path);
+        });
 
         setTimeout(function(){
             $('.loader').fadeOut(300);
@@ -119,8 +124,6 @@
 
         var left = $(window).width();
 
-        console.log(zip);
-
         zip = zip[0] === '{' ? JSON.parse(zip) : false;
 
         if (zip) {
@@ -169,12 +172,16 @@
     }
 
     function sendRequst(){
-        $.post('https://lab.evelthost.com/quix/api/send.php', {
-            name : $('#name').val()
-        }).done(function(data) {
-            console.log(data);
+        $('.loader').fadeIn(300);
+        $.post('https://lab.evelthost.com/quix/api/send.php', $('form').serializeArray()).done(function(data) {
+            setTimeout(function(){
+                $('.loader').fadeOut(300);
+                $('.modal').modal('close');
+                Materialize.toast('<div class="">Request Sent!</div>', 4000);
+            },1500);
         }).fail(function(data) {
-            console.log(data);
+            $('.loader').fadeOut(300);
+            Materialize.toast('<div class="red-text">Request Failed Try Again Later</div>', 4000);
         });
     }
 

@@ -78,7 +78,7 @@
         </div>
 
         <div class="app">
-            <div class="app-inner">
+            <form class="app-inner">
                 <div class="zip-form">
                     <h1 class="center-align flow-text">We serve the 5 boros 24/7</h1>
                     <br><br>
@@ -103,23 +103,23 @@
                         <div class="col s12">
                             <div class="row">
                                 <div class="input-field col s12">
-                                    <input id="name" type="text" class="validate">
+                                    <input id="name" name="name" type="text" class="validate">
                                     <label for="first_name">Name</label>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="input-field col s12">
-                                    <input id="email" type="email" class="validate">
+                                    <input id="email" name="email" type="email" class="validate">
                                     <label for="email">Email</label>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="input-field col s9">
-                                    <input id="phone" type="tel" class="validate">
+                                    <input id="phone" name="phone" type="tel" class="validate">
                                     <label for="phone">Phone</label>
                                 </div>
                                 <div class="input-field col s3">
-                                    <select id="phoneType">
+                                    <select id="phoneType" name="phoneType">
                                         <option value="cell">Cell</option>
                                         <option value="home">Home</option>
                                         <option value="work">Work</option>
@@ -148,25 +148,25 @@
                         <div class="col s12">
                             <div class="row">
                                 <div class="input-field col s12">
-                                    <input id="address" type="text">
+                                    <input id="address" name="address" type="text">
                                     <label for="address">Address</label>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="input-field col s12">
-                                    <input id="city" type="text">
+                                    <input id="city" name="city" type="text">
                                     <label for="city">City</label>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="input-field col s12">
-                                    <input id="state" type="text">
+                                    <input id="state" name="state" type="text">
                                     <label for="state">State</label>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="input-field col s12">
-                                    <input id="zip" type="number">
+                                    <input id="zip" name="zip" type="number">
                                     <label for="zip">Zip</label>
                                 </div>
                             </div>
@@ -193,13 +193,13 @@
                         <div class="col s12">
                             <div class="row">
                                 <div class="input-field col s12">
-                                    <input id="date" type="text" class="datepicker">
+                                    <input id="date" name="date" type="text" class="datepicker">
                                     <label for="date">Date</label>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="input-field col s12">
-                                    <input id="time" type="text" class="timepicker">
+                                    <input id="time" name="time" type="text" class="timepicker">
                                     <label for="time">Time</label>
                                 </div>
                             </div>
@@ -226,7 +226,7 @@
                         <div class="col s12">
                             <div class="row">
                                 <div class="input-field col s12">
-                                    <textarea id="description" class="materialize-textarea"></textarea>
+                                    <textarea id="description" name="description" class="materialize-textarea"></textarea>
                                     <label for="description">Description</label>
                                 </div>
                             </div>
@@ -234,7 +234,7 @@
                             <div class="row">
 
                                 <div class="col s12">
-                                    <input id="file" type="text">
+                                    <input id="file" name="file" type="text">
                                 </div>
 
                             </div>
@@ -253,7 +253,7 @@
 
                 </div>
 
-            </div>
+            </form>
         </div>
 
     </main>
@@ -267,7 +267,7 @@
             </div>
         </div>
         <div class="modal-footer">
-            <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat send-request">Send Request</a>
+            <a href="#!" class="modal-action waves-effect waves-green btn-flat send-request">Send Request</a>
         </div>
     </div>
 
