@@ -1,100 +1,56 @@
 (function($) {
     $(function() {
 
-        var cache = {};
+        var cache = {},
+            addressObj = new google.maps.places.Autocomplete(document.getElementById('address'), {});
 
         $('.button-collapse').sideNav();
         $('select').material_select();
         $('.datepicker').pickadate({
             min: true
         });
-        $('.timepicker').pickatime({
-            container :'body'
-        });
         $('#date_root').appendTo('body');
         $('.modal').modal();
+        $('.file').uploader();
 
-        $('#file').uploader();
+        $(document).on('file', '.file:not(.has-value)', function(e, data){
 
-        $('#file').on('file', function(e, data){
-            $('#file').val(data.domain + data.path);
+            var totalFiles = $('.files .file').length,
+                fileId = 'file' + ( totalFiles + 1 );
+
+            $(this).val(data.domain + data.path).change().addClass('has-value required');
+
+            $('.files').append('<div class="col s6"><input class="file" id="'+ fileId +'" name="'+ fileId +'" type="text"></div>');
+            $('#' + fileId).uploader({
+                label : '<i class="large material-icons">add</i>'
+            });
+
         });
 
-        setTimeout(function(){
-            $('.loader').fadeOut(300);
-        },1000);
+        $(document).on('keyup change input', '.app-page input, .app-page textarea', function(){
 
-        $(document).on("keyup", "input[name='zipcode']", function() {
+            var page = $(this).closest('.app-page'),
+                next = page.find('.next'),
+                isValid = true;
 
-            var zipcode = $(this).val().substring(0, 5);
+            page.find('input.required, textarea.required').each(function(){
 
-            if (zipcode.length === 5 && /^[0-9]+$/.test(zipcode)) {
-
-                $(this).blur();
-                $('.zip-form .next').removeClass('disabled');
-
-                if (zipcode in cache) {
-
-                    handleResp(cache[zipcode]);
-
-                } else {
-
-                    $('.loader').fadeIn(300);
-
-                    // Make AJAX request
-                    $.get('https://lab.evelthost.com/quix/api/index.php?zip=' + zipcode).done(function(data) {
-                        handleResp(data);
-
-                        // Store in cache
-                        cache[zipcode] = data;
-                        setTimeout(function(){
-                            $('.loader').fadeOut(300);
-                        },300);
-                    }).fail(function(data) {
-                        setTimeout(function(){
-                            $('.loader').fadeOut(300);
-                        },300);
-                    });
-
+                if(!$(this).val()){
+                    isValid = false;
                 }
 
+            });
+
+            if(isValid){
+                next.removeClass('disabled');
             }else{
-                $('.zip-form .next').addClass('disabled');
+                next.addClass('disabled');
             }
 
-        }).on('keyup change input', '.name-form input', function(){
+        }).on('keyup change input', '#description, .file', function(){
 
-            var name = $('#name').val(),
-                email = $('#email').val(),
-                phone = $('#phone').val();
-
-            if(name && email && phone){
-                $('.name-form .next').removeClass('disabled');
-            }else{
-                $('.name-form .next').addClass('disabled');
-            }
-
-        }).on('keyup change input', '.address-form input', function(){
-
-            var address = $('#address').val(),
-                city = $('#city').val(),
-                state = $('#state').val(),
-                zip = $('#zip').val();
-
-            if(address && city && state && zip){
-                $('.address-form .next').removeClass('disabled');
-            }else{
-                $('.address-form .next').addClass('disabled');
-            }
-
-        }).on('keyup change input', '.description-form textarea', function(){
-
-            var description = $('#description').val();
-
-            if(description){
-                $('.description-form .next').removeClass('disabled');
-            }else{
-                $('.description-form .next').addClass('disabled');
+            if($(this).val()){
+                $(this).closest('.app-page').find('.next').removeClass('disabled');
             }
 
         }).on('click', '[data-slide]', function(){
@@ -103,69 +59,63 @@
 
             return false;
         }).on('click', '.checkout', showRequest)
-        .on('click', '.send-request', sendRequst);
-
-        $('#date, #time').on('keyup change input', function(){
-
-            var date = $('#date').val(),
-                time = $('#time').val();
-
-            if(date && time){
-                $('.date-form .next').removeClass('disabled');
-            }else{
-                $('.date-form .next').addClass('disabled');
-            }
-
+        .on('click', '.send-request', sendRequst)
+        .on('change', '#useContactPerson', function(){
+            $('.contact-person').toggle();
         });
+
+        setTimeout(function(){
+            $('.loader').fadeOut(300);
+            Materialize.updateTextFields();
+        },1000);
 
     }); // end of document ready
 
-    function handleResp(zip) {
-
-        var left = $(window).width();
-
-        zip = zip[0] === '{' ? JSON.parse(zip) : false;
-
-        if (zip) {
-
-            $('.app h4').text(zip.city + ', ' + zip.state);
-            $('.app-inner').css('transform', 'translateX(-' + left + 'px)');
-            $('#city').val(zip.city);
-            $('#state').val(zip.state);
-            $('#zip').val(zip.zip_code);
-
-        }else{
-            $('.app h4').text('');
-            $('#city').val('');
-            $('#state').val('');
-            $('#zip').val('');
-        }
-
-        Materialize.updateTextFields();
-
-    }
-
     function showRequest(){
-        var container = $('.review-request');
-        container.empty();
+        var container = $('.review-request'),
+            preview = '';
 
-        container.append('<div><strong>Name</strong><br/>'+ $('#name').val() +'<br/></div>');
-        container.append('<div><strong>Email</strong><br/>'+ $('#email').val() +'<br/></div>');
-        container.append('<div><strong>Phone</strong><br/>'+ $('#phone').val() + ' - ' + $('#phoneType').val() +'<br/></div>');
+        preview += '<p class="center-align flow-text">Describe your problem</p>';
 
-        container.append('<div><strong>Address</strong><br/>'+ $('#address').val() +'<br/></div>');
-        container.append('<div><strong>City</strong><br/>'+ $('#city').val() +'<br/></div>');
-        container.append('<div><strong>State</strong><br/>'+ $('#state').val() +'<br/></div>');
-        container.append('<div><strong>Zip</strong><br/>'+ $('#zip').val() +'<br/></div>');
-
-        container.append('<div><strong>Date</strong><br/>'+ $('#date').val() +'<br/></div>');
-        container.append('<div><strong>Time</strong><br/>'+ $('#time').val() +'<br/></div>');
-
-        container.append('<div><strong>Description</strong><br/>'+ $('#description').val() +'<br/></div>');
-
-        if($('#file').val()){
-            container.append('<div><strong>File</strong><br/><a href="'+ Uploader.domain + $('#file').val() +'">Link</a><br/></div>');
+        if($('#description').val()){
+            preview += '<div><strong>Description</strong><br/>'+ $('#description').val() +'<br/><br/></div>';
         }
+
+        if($('.file.has-value').length){
+            preview += '<div class="row file-preview-container">';
+
+                $('.file.has-value').each(function(){
+                    preview += '<div class="col s6"><div class="file-preview" style="background-image:url('+ $(this).val() +')"></div></div>';
+                });
+
+            preview += '</div><br/>';
+        }
+
+        preview += '<hr/>';
+        preview += '<p class="center-align flow-text">Where</p>';
+        preview += '<div><strong>Address</strong><br/>'+ $('#address').val() +'<br/></div>';
+
+        preview += '<hr/>';
+        preview += '<p class="center-align flow-text">When</p>';
+        preview += '<div><strong>Date</strong><br/>'+ $('#date').val() +'<br/></div>';
+        preview += '<div><strong>Time</strong><br/>'+ $('#time').val() +'<br/></div>';
+
+        preview += '<hr/>';
+        preview += '<p class="center-align flow-text">Info</p>';
+        preview += '<div><strong>Name</strong><br/>'+ $('#name').val() +'<br/></div>';
+        preview += '<div><strong>Email</strong><br/>'+ $('#email').val() +'<br/></div>';
+        preview += '<div><strong>Phone</strong><br/>'+ $('#phone').val() + ' - ' + $('#phoneType').val() +'<br/></div>';
+
+        if($('#useContactPerson').is(':checked')){
+
+            preview += '<hr/>';
+            preview += '<p class="center-align flow-text">Contact Person</p>';
+            preview += '<div><strong>Name</strong><br/>'+ $('#contactName').val() +'<br/></div>';
+            preview += '<div><strong>Phone</strong><br/>'+ $('#contactPhone').val() +'<br/></div>';
+
+        }
+
+        container.html(preview);
 
         return false;
 

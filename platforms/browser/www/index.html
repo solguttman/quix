@@ -45,91 +45,102 @@
 <body>
 
     <nav class="blue-grey lighten-5" role="navigation">
-        <div class="nav-wrapper container">
-            <a id="logo-container" href="#" class="brand-logo">
+        <div class="nav-wrapper">
+            <a id="logo-container" href="/" class="brand-logo">
                 <img src="images/quixLogo.svg" alt="">
             </a>
-            <ul class="right hide-on-med-and-down">
-                <li><a href="#">Navbar Link</a></li>
-            </ul>
             <ul id="nav-mobile" class="side-nav">
-                <li><a href="#">Navbar Link</a></li>
+                <div>
+                    <li class="logo center row blue-grey lighten-5">
+                        <div class="col s4">&nbsp;</div>
+                        <img src="images/quixicon.svg" alt="" class="col s4">
+                        <div class="col s4">&nbsp;</div>
+                    </li>
+                </div>
+                <li><a href="#">Request Service</a></li>
+                <li><a href="#">Call Support</a></li>
+                <li><a href="#">My Account</a></li>
             </ul>
             <a href="#" data-activates="nav-mobile" class="button-collapse indigo-text text-darken-4"><i class="material-icons">menu</i></a>
+            <a href="tel:845-459-5754" class="button-collapse indigo-text text-darken-4 right"><i class="material-icons">call</i></a>
         </div>
     </nav>
 
     <main>
 
         <div class="loader">
-            <div class="preloader-wrapper big active">
-                <div class="spinner-layer spinner-blue-only">
-                    <div class="circle-clipper left">
-                        <div class="circle"></div>
-                    </div>
-                    <div class="gap-patch">
-                        <div class="circle"></div>
-                    </div>
-                    <div class="circle-clipper right">
-                        <div class="circle"></div>
-                    </div>
-                </div>
-            </div>
+            <img src="images/quixLoader.gif" alt="">
         </div>
 
         <div class="app">
-            <form class="app-inner">
-                <div class="zip-form">
-                    <h1 class="center-align flow-text">We serve the 5 boros 24/7</h1>
-                    <br><br>
+            <form class="app-inner" onsubmit="return false;">
+                <div class="app-page">
+                    <h2 class="center-align flow-text">Describe your problem</h2>
+
                     <div>
                         <div class="row">
-                            <div class="col s1"></div>
-                            <div class="input-field col s10">
-                                <input id="email" name="zipcode" type="number" class="center-align" placeholder="Please enter you 5 digit Zip Code">
-                                <div class="input-field center-align">
-                                    <a class="col s12 waves-effect waves-light btn indigo indigo-darken-4 disabled next" data-slide="1">Next</a>
+                            <div class="col s12">
+                                <div class="row">
+                                    <div class="input-field col s12">
+                                        <textarea id="description" name="description" class="materialize-textarea required"></textarea>
+                                        <label for="description">Description</label>
+                                    </div>
                                 </div>
+
+                                <div class="row files">
+
+                                    <div class="col s6">
+                                        <input class="file required" id="file1" name="file1" type="text">
+                                    </div>
+
+                                </div>
+
+                                <div class="row navigation">
+                                    <div class="input-field col s12">
+                                        <a class="col s12 waves-effect waves-light btn indigo indigo-darken-4 disabled next" data-slide="1">Next</a>
+                                    </div>
+                                </div>
+
                             </div>
-                            <div class="col s1"></div>
                         </div>
                     </div>
                 </div>
-                <div class="name-form">
+                <div class="app-page">
 
-                    <h4 class="center-align"></h4>
+                    <h2 class="center-align flow-text">Where</h2>
 
                     <div class="row">
                         <div class="col s12">
                             <div class="row">
                                 <div class="input-field col s12">
-                                    <input id="name" name="name" type="text" class="validate">
-                                    <label for="first_name">Name</label>
+                                    <input id="address" name="address" type="text" class="required" placeholder="Start typing">
+                                    <label for="address" class="active">Address</label>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <h2 class="center-align flow-text">Where</h2>
+
+                    <div class="row">
+                        <div class="col s12">
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <input id="date" name="date" type="text" class="datepicker required">
+                                    <label for="date">Date</label>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="input-field col s12">
-                                    <input id="email" name="email" type="email" class="validate">
-                                    <label for="email">Email</label>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="input-field col s9">
-                                    <input id="phone" name="phone" type="tel" class="validate">
-                                    <label for="phone">Phone</label>
-                                </div>
-                                <div class="input-field col s3">
-                                    <select id="phoneType" name="phoneType">
-                                        <option value="cell">Cell</option>
-                                        <option value="home">Home</option>
-                                        <option value="work">Work</option>
-                                    </select>
+                                    <input id="time" name="time" type="time" class="required">
+                                    <label for="time" class="active">Time</label>
                                 </div>
                             </div>
 
-                            <div class="row">
+                            <div class="row navigation">
                                 <div class="input-field col s6">
-                                    <a class="col s12 waves-effect waves-light btn blue-grey lighten-5 indigo-text text-darken-4 prev" data-slide="0">Prev</a>
+                                    <a class="col s12 waves-effect waves-light btn blue-grey lighten-5 indigo-text text-darken-4 back" data-slide="0">Prev</a>
                                 </div>
                                 <div class="input-field col s6">
                                     <a class="col s12 waves-effect waves-light btn indigo indigo-darken-4 disabled next" data-slide="2">Next</a>
@@ -140,108 +151,62 @@
                     </div>
 
                 </div>
-                <div class="address-form">
+                <div class="app-page">
 
-                    <h4 class="center-align"></h4>
-
-                    <div class="row">
-                        <div class="col s12">
-                            <div class="row">
-                                <div class="input-field col s12">
-                                    <input id="address" name="address" type="text">
-                                    <label for="address">Address</label>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="input-field col s12">
-                                    <input id="city" name="city" type="text">
-                                    <label for="city">City</label>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="input-field col s12">
-                                    <input id="state" name="state" type="text">
-                                    <label for="state">State</label>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="input-field col s12">
-                                    <input id="zip" name="zip" type="number">
-                                    <label for="zip">Zip</label>
-                                </div>
-                            </div>
-
-                            <div class="row">
-                                <div class="input-field col s6">
-                                    <a class="col s12 waves-effect waves-light btn blue-grey lighten-5 indigo-text text-darken-4 back" data-slide="1">Prev</a>
-                                </div>
-                                <div class="input-field col s6">
-                                    <a class="col s12 waves-effect waves-light btn indigo indigo-darken-4 disabled next" data-slide="3">Next</a>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-
-                </div>
-
-                <div class="date-form">
-
-                    <h4 class="center-align"></h4>
+                    <h2 class="center-align flow-text">Info</h2>
 
                     <div class="row">
                         <div class="col s12">
                             <div class="row">
                                 <div class="input-field col s12">
-                                    <input id="date" name="date" type="text" class="datepicker">
-                                    <label for="date">Date</label>
+                                    <input id="name" name="name" type="text" class="validate required">
+                                    <label for="first_name">Name</label>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="input-field col s12">
-                                    <input id="time" name="time" type="text" class="timepicker">
-                                    <label for="time">Time</label>
+                                    <input id="email" name="email" type="email" class="validate required">
+                                    <label for="email">Email</label>
                                 </div>
                             </div>
-
                             <div class="row">
-                                <div class="input-field col s6">
-                                    <a class="col s12 waves-effect waves-light btn blue-grey lighten-5 indigo-text text-darken-4 back" data-slide="2">Prev</a>
+                                <div class="input-field col s9">
+                                    <input id="phone" name="phone" type="tel" class="validate required">
+                                    <label for="phone">Phone</label>
                                 </div>
-                                <div class="input-field col s6">
-                                    <a class="col s12 waves-effect waves-light btn indigo indigo-darken-4 disabled next" data-slide="4">Next</a>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-
-                </div>
-
-                <div class="description-form">
-
-                    <h4 class="center-align"></h4>
-
-                    <div class="row">
-                        <div class="col s12">
-                            <div class="row">
-                                <div class="input-field col s12">
-                                    <textarea id="description" name="description" class="materialize-textarea"></textarea>
-                                    <label for="description">Description</label>
+                                <div class="input-field col s3">
+                                    <select id="phoneType" name="phoneType">
+                                        <option value="cell">Cell</option>
+                                        <option value="home">Home</option>
+                                        <option value="work">Work</option>
+                                    </select>
                                 </div>
                             </div>
-
                             <div class="row">
-
                                 <div class="col s12">
-                                    <input id="file" name="file" type="text">
+                                    <input type="checkbox" class="filled-in" id="useContactPerson" />
+                                    <label for="useContactPerson">Add Contact Person</label>
                                 </div>
-
                             </div>
 
-                            <div class="row">
+                            <div class="contact-person">
+                                <div class="row">
+                                    <div class="input-field col s12">
+                                        <input id="contactName" name="contactName" type="text" class="validate">
+                                        <label for="email">Name</label>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="input-field col s12">
+                                        <input id="contactPhone" name="contactPhone" type="tel" class="validate">
+                                        <label for="contactPhone">Phone</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row navigation">
                                 <div class="input-field col s6">
-                                    <a class="col s12 waves-effect waves-light btn blue-grey lighten-5 indigo-text text-darken-4 back" data-slide="3">Prev</a>
+                                    <a class="col s12 waves-effect waves-light btn blue-grey lighten-5 indigo-text text-darken-4 prev" data-slide="1">Prev</a>
                                 </div>
                                 <div class="input-field col s6">
                                     <a class="col s12 waves-effect waves-light btn green green-darken-4 disabled next modal-trigger checkout" href="#confirm-modal">Review</a>
@@ -261,13 +226,14 @@
     <!-- Modal Structure -->
     <div id="confirm-modal" class="modal modal-fixed-footer">
         <div class="modal-content">
-            <h4>Review Request</h4>
+            <h4 class="center-align">Review Request</h4>
             <div class="review-request">
 
             </div>
         </div>
         <div class="modal-footer">
-            <a href="#!" class="modal-action waves-effect waves-green btn-flat send-request">Send Request</a>
+            <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat left">Cancle</a>
+            <a href="#!" class="modal-action waves-effect waves-green btn-flat send-request right">Send Request</a>
         </div>
     </div>
 
@@ -275,6 +241,7 @@
     <script type="text/javascript" src="cordova.js"></script>
     <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
     <script src="https://fs1.cloudsnob.com/static/uploader.js" token="B7S0LLQ7739AS"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDIaszVrabk86d_NTTJkHQlhshQ1gkLjmc&libraries=places" async defer></script>
     <script type="text/javascript" src="js/materialize.min.js"></script>
     <script type="text/javascript" src="js/app.js"></script>
     <script type="text/javascript" src="js/index.js"></script>

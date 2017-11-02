@@ -41,7 +41,7 @@ var app = {
 
         setTimeout(function(){
             $('.loader').fadeOut(300);
-        },1000);
+        },3000);
 
         console.log('Received Event: ' + id);
     }
