@@ -1,12 +1,8 @@
 (function($) {
     $(function() {
 
-        Materialize.toast('<div class="">Start!</div>', 10000);
-
         var cache = {},
             addressObj = typeof google !== 'undefined' ? new google.maps.places.Autocomplete(document.getElementById('address'), {}) : {};
-
-        Materialize.toast('<div class="">After Googe! '+ typeof google +'</div>', 10000);
 
         $('.button-collapse').sideNav();
         $('select').material_select();
@@ -15,8 +11,9 @@
         });
         $('#date_root').appendTo('body');
         $('.modal').modal();
-        Materialize.toast('<div class="">After Init '+ typeof Uploader +'</div>', 10000);
-        $('.file').uploader();
+        if(typeof 'Uplader' !== 'undefined'){
+            $('.file').uploader();
+        }
 
         $(document).on('file', '.file:not(.has-value)', function(e, data){
 
@@ -68,8 +65,6 @@
         .on('change', '#useContactPerson', function(){
             $('.contact-person').toggle();
         });
-
-        Materialize.toast('<div class="">Before Timeout</div>', 10000);
 
         setTimeout(function(){
             $('.loader').fadeOut(300);
