@@ -6,6 +6,8 @@
         var cache = {},
             addressObj = typeof google !== 'undefined' ? new google.maps.places.Autocomplete(document.getElementById('address'), {}) : {};
 
+        Materialize.toast('<div class="">After Googe! '+ typeof google +'</div>', 10000);
+
         $('.button-collapse').sideNav();
         $('select').material_select();
         $('.datepicker').pickadate({
@@ -65,6 +67,8 @@
         .on('change', '#useContactPerson', function(){
             $('.contact-person').toggle();
         });
+
+        Materialize.toast('<div class="">Before Timeout</div>', 10000);
 
         setTimeout(function(){
             $('.loader').fadeOut(300);
