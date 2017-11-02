@@ -15,9 +15,8 @@
         });
         $('#date_root').appendTo('body');
         $('.modal').modal();
-        $('.file').uploader();
-
         Materialize.toast('<div class="">After Init</div>', 10000);
+        $('.file').uploader();
 
         $(document).on('file', '.file:not(.has-value)', function(e, data){
 
