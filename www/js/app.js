@@ -1,8 +1,7 @@
 (function($) {
     $(function() {
 
-        var cache = {},
-            addressObj = typeof google !== 'undefined' ? new google.maps.places.Autocomplete(document.getElementById('address'), {}) : {};
+        var cache = {};
 
         setTimeout(function(){
             $('.loader').fadeOut(300);
@@ -19,6 +18,10 @@
         if(typeof 'Uplader' !== 'undefined'){
             $('.file').uploader();
         }
+
+        $.getScript('https://maps.googleapis.com/maps/api/js?key=AIzaSyDIaszVrabk86d_NTTJkHQlhshQ1gkLjmc&libraries=places', function(){
+            new google.maps.places.Autocomplete(document.getElementById('address'), {});
+        });
 
         $(document).on('file', '.file:not(.has-value)', function(e, data){
 
