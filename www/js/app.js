@@ -127,7 +127,9 @@
             setTimeout(function(){
                 $('.loader').fadeOut(300);
                 $('.modal').modal('close');
-                Materialize.toast('<div class="">Request Sent!</div>', 4000);
+                //Materialize.toast('<div class="">Request Sent!</div>', 4000);
+                $('.app').html('<div><h3 class="center-align">Thanks you</h3><p class="center-align flow-text">work order Number #2345</p></div>');
+
             },1500);
         }).fail(function(data) {
             $('.loader').fadeOut(300);
