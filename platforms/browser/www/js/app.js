@@ -17,6 +17,8 @@
         $('.modal').modal();
         $('.file').uploader();
 
+        Materialize.toast('<div class="">After Init</div>', 10000);
+
         $(document).on('file', '.file:not(.has-value)', function(e, data){
 
             var totalFiles = $('.files .file').length,
