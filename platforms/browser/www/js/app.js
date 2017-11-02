@@ -2,7 +2,7 @@
     $(function() {
 
         var cache = {},
-            addressObj = new google.maps.places.Autocomplete(document.getElementById('address'), {});
+            addressObj = typeof google !== 'undefined' ? new google.maps.places.Autocomplete(document.getElementById('address'), {}) : {};
 
         $('.button-collapse').sideNav();
         $('select').material_select();
