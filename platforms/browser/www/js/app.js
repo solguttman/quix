@@ -1,6 +1,8 @@
 (function($) {
     $(function() {
 
+        Materialize.toast('<div class="">Start!</div>', 10000);
+
         var cache = {},
             addressObj = typeof google !== 'undefined' ? new google.maps.places.Autocomplete(document.getElementById('address'), {}) : {};
 
