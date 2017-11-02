@@ -20,7 +20,9 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
 }
-
+nav .button-collapse{
+	margin: 0;
+}
 main{
     min-height: calc(100vh - 56px);
     display: flex;
@@ -29,6 +31,11 @@ main{
 }
 .side-nav .logo{
     padding: 30px 0;
+}
+.side-nav .logo img{
+    margin: auto;
+    display: block;
+    width: 100px;
 }
 .loader{
     position: fixed;
