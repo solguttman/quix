@@ -4,6 +4,11 @@
         var cache = {},
             addressObj = typeof google !== 'undefined' ? new google.maps.places.Autocomplete(document.getElementById('address'), {}) : {};
 
+        setTimeout(function(){
+            $('.loader').fadeOut(300);
+            Materialize.updateTextFields();
+        },1000);
+
         $('.button-collapse').sideNav();
         $('select').material_select();
         $('.datepicker').pickadate({
@@ -66,10 +71,6 @@
             $('.contact-person').toggle();
         });
 
-        setTimeout(function(){
-            $('.loader').fadeOut(300);
-            Materialize.updateTextFields();
-        },1000);
 
     }); // end of document ready
 
