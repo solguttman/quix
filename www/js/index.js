@@ -35,6 +35,7 @@ var app = {
     onDeviceReady: function() {
         navigator.splashscreen.hide();
         app.receivedEvent('deviceready');
+        Materialize.toast('PushNotification ' + typeof PushNotification, 4000);
         if(typeof PushNotification !== 'undefined'){
             var push = PushNotification.init({
                 android : {
