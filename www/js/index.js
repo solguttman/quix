@@ -35,6 +35,26 @@ var app = {
     onDeviceReady: function() {
         navigator.splashscreen.hide();
         app.receivedEvent('deviceready');
+        if(typeof PushNotification !== 'undefined'){
+            var push = PushNotification.init({
+                android : {
+                    senderId : "767712014853"
+                }
+            });
+
+            push.on('registration', function(data){
+                console.log(data.registrationId);
+                Materialize.toast('ID: ' + data.registrationId, 60000);
+            });
+
+            push.on('error', function(error){
+                Materialize.toast('Error ' + error, 4000);
+            });
+
+            push.on('notification', function(data){
+                navigator.notification.alert(data.message, null, data.title);
+            });
+        }
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
