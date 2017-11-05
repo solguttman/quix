@@ -47,7 +47,11 @@ var app = {
                 console.log(data.registrationId);
                 Materialize.toast('ID: ' + data.registrationId, 60000);
                 Materialize.toast('subscribe ' + typeof push.subscribe, 4000);
-                push.subscribe('/topics/all');
+                push.subscribe('all', function(success){
+                    Materialize.toast('Subscribed ' + success, 40000);
+                }, function(error){
+                    Materialize.toast('Error ' + error, 40000);
+                });
             });
 
             push.on('error', function(error){
