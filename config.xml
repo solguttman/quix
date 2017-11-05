@@ -34,6 +34,9 @@
         <variable name="senderID" value="767712014853" />
     </plugin>
     <platform name="android">
+        <resource-file src="google-services.json" target="/google-services.json" />
+    </platform>
+    <platform name="android">
         <icon density="ldpi" src="res/icons/android/drawable-ldpi-icon.png" />
         <icon density="mdpi" src="res/icons/android/drawable-mdpi-icon.png" />
         <icon density="hdpi" src="res/icons/android/drawable-hdpi-icon.png" />
