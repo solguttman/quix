@@ -10,6 +10,9 @@
     <content src="index.html" />
     <preference name="DisallowOverscroll" value="true" />
     <preference name="android-minSdkVersion" value="14" />
+    <platform name="android">
+        <resource-file src="google-services.json" target="google-services.json" />
+    </platform>
     <plugin name="cordova-plugin-battery-status" source="npm" spec="~1.1.1" />
     <plugin name="cordova-plugin-camera" source="npm" spec="~2.1.1" />
     <plugin name="cordova-plugin-media-capture" source="npm" spec="~1.2.0" />
@@ -33,9 +36,7 @@
     <plugin name="phonegap-plugin-push" spec="1.5.3">
         <variable name="senderID" value="767712014853" />
     </plugin>
-    <platform name="android">
-        <resource-file src="google-services.json" target="/google-services.json" />
-    </platform>
+
     <platform name="android">
         <icon density="ldpi" src="res/icons/android/drawable-ldpi-icon.png" />
         <icon density="mdpi" src="res/icons/android/drawable-mdpi-icon.png" />
