@@ -39,7 +39,7 @@ var app = {
         if(typeof PushNotification !== 'undefined'){
             var push = PushNotification.init({
                 android : {
-                    senderId : "767712014853"
+                    senderID : "767712014853"
                 }
             });
 
