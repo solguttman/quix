@@ -9,7 +9,7 @@
     </author>
     <content src="index.html" />
 
-    <preference name='phonegap-version' value='cli-6.5.0' />
+    <preference name='phonegap-version' value='cli-7.0.1' />
 
     <preference name="DisallowOverscroll" value="true" />
     <preference name="android-minSdkVersion" value="14" />
