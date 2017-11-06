@@ -39,10 +39,10 @@ var app = {
         if(typeof PushNotification !== 'undefined'){
             var push = PushNotification.init({
                 android : {
-                    senderID : "767712014853"
+                    //senderID : "767712014853"
                 },
                 ios : {
-                    senderID : "767712014853",
+                    //senderID : "767712014853",
                     sound: true,
                     vibration: true,
                     badge: true
