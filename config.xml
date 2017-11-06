@@ -22,9 +22,12 @@
     <plugin name="phonegap-plugin-push" spec="~2.0.0" />
 
     <preference name='phonegap-version' value='cli-7.0.1' />
-    <preference name='pgb-builder-version' value='2' />
     <preference name="DisallowOverscroll" value="true" />
     <preference name="android-minSdkVersion" value="14" />
+
+    <platform name="android">
+        <preference name='pgb-builder-version' value='1' />
+    </platform>
 
 
     <icon src="www/icon.png" />
