@@ -10,7 +10,7 @@
     <content src="index.html" />
 
     <platform name="android">
-        <resource-file src="google-services.json"/>
+        <resource-file src="google-services.json" target="google-services.json" />
     </platform>
 
     <platform name="ios">
@@ -18,7 +18,7 @@
     </platform>
 
     <preference name='phonegap-version' value='cli-7.0.1' />
-    <preference name='pgb-builder-version' value='1' />
+
     <preference name="DisallowOverscroll" value="true" />
     <preference name="android-minSdkVersion" value="14" />
 
