@@ -37,29 +37,16 @@ var app = {
         app.receivedEvent('deviceready');
         Materialize.toast('PushNotification ' + typeof PushNotification, 4000);
         if(typeof PushNotification !== 'undefined'){
-            // var push = PushNotification.init({
-            //     android : {
-            //         senderID : "767712014853"
-            //     },
-            //     ios : {
-            //         senderID : "767712014853",
-            //         sound: true,
-            //         vibration: true,
-            //         badge: true
-            //     }
-            // });
-
             var push = PushNotification.init({
-                android: {},
-                browser: {
-                    pushServiceURL: 'http://push.api.phonegap.com/v1/push'
+                android : {
+                    senderID : "767712014853"
                 },
-                ios: {
-                    alert: true,
-                    badge: true,
-                    sound: false
-                },
-                windows: {}
+                ios : {
+                    senderID : "767712014853",
+                    sound: true,
+                    vibration: true,
+                    badge: true
+                }
             });
 
             push.on('registration', function(data){
