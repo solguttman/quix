@@ -43,6 +43,8 @@ var app = {
                 },
                 ios : {
                     //senderID : "767712014853",
+                    gcmSandbox: true,
+                    fcmSandbox: true,
                     sound: true,
                     vibration: true,
                     badge: true
