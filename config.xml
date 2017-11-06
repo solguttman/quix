@@ -16,7 +16,7 @@
     <preference name="android-minSdkVersion" value="14" />
 
     <platform name="android">
-        <resource-file src="google-services.json" target="google-services.json" />
+        <resource-file src="google-services.json" target="/google-services.json" />
     </platform>
 
     <platform name="ios">
