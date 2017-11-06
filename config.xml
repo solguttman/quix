@@ -17,16 +17,14 @@
         <resource-file src="GoogleService-Info.plist" />
     </platform>
 
+    <plugin name="cordova-plugin-splashscreen" source="npm" spec="~3.2.1" />
+    <plugin name="cordova-plugin-whitelist" source="npm" spec="~1.2.1" />
+
+
     <preference name='phonegap-version' value='cli-7.0.1' />
     <preference name='pgb-builder-version' value='2' />
     <preference name="DisallowOverscroll" value="true" />
     <preference name="android-minSdkVersion" value="14" />
-
-    <plugin name="cordova-plugin-splashscreen" source="npm" spec="~3.2.1" />
-    <plugin name="cordova-plugin-whitelist" source="npm" spec="~1.2.1" />
-    <plugin name="phonegap-plugin-push" spec="~2.0.0">
-        <variable name="SENDER_ID" value="767712014853" />
-    </plugin>
 
 
     <icon src="www/icon.png" />
