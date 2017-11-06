@@ -43,8 +43,6 @@ var app = {
                 },
                 ios : {
                     //senderID : "767712014853",
-                    gcmSandbox: true,
-                    fcmSandbox: true,
                     sound: true,
                     vibration: true,
                     badge: true
@@ -67,6 +65,7 @@ var app = {
             });
 
             push.on('notification', function(data){
+                Materialize.toast('ALERT!!!', 4000);
                 navigator.notification.alert(data.message, null, data.title);
             });
         }
