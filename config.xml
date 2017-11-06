@@ -25,8 +25,9 @@
     <preference name="DisallowOverscroll" value="true" />
     <preference name="android-minSdkVersion" value="14" />
 
-
-
+    <platform name="ios">
+        <preference name='pgb-builder-version' value='1' />
+    </platform>
 
     <icon src="www/icon.png" />
     <splash src="www/splash.png" />
