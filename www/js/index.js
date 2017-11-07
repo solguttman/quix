@@ -37,6 +37,9 @@ var app = {
         app.receivedEvent('deviceready');
         Materialize.toast('window.FirebasePlugin ' + typeof window.FirebasePlugin, 4000);
         if(typeof FirebasePlugin !== 'undefined'){
+            window.FirebasePlugin.subscribe("all", function(subscribtion){
+                Materialize.toast('subscribtion ' + subscribtion, 5000);
+            });
             window.FirebasePlugin.onNotificationOpen(function(notification) {
                 Materialize.toast('notification ' + notification, 5000);
             }, function(error) {
