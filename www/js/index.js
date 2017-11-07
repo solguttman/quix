@@ -35,7 +35,7 @@ var app = {
     onDeviceReady: function() {
         navigator.splashscreen.hide();
         app.receivedEvent('deviceready');
-        Materialize.toast('PushNotification ' + typeof PushNotification, 4000);
+        //Materialize.toast('PushNotification ' + typeof PushNotification, 4000);
         if(typeof PushNotification !== 'undefined'){
             var push = PushNotification.init({
                 android : {
@@ -50,11 +50,10 @@ var app = {
             });
 
             push.on('registration', function(data){
-                console.log(data.registrationId);
-                Materialize.toast('ID: ' + data.registrationId, 60000);
-                Materialize.toast('subscribe ' + typeof push.subscribe, 4000);
+                //Materialize.toast('ID: ' + data.registrationId, 60000);
+                //Materialize.toast('subscribe ' + typeof push.subscribe, 4000);
                 push.subscribe('all', function(success){
-                    Materialize.toast('Subscribed ' + success, 40000);
+                    //Materialize.toast('Subscribed ' + success, 40000);
                 }, function(error){
                     Materialize.toast('Error ' + error, 40000);
                 });
@@ -68,6 +67,8 @@ var app = {
                 Materialize.toast('ALERT!!!', 4000);
                 navigator.notification.alert(data.message, null, data.title);
             });
+        }else{
+            Materialize.toast('Error PushNotification undefined', 40000);
         }
     },
     // Update DOM on a Received Event
