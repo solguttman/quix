@@ -35,17 +35,27 @@ var app = {
     onDeviceReady: function() {
         navigator.splashscreen.hide();
         app.receivedEvent('deviceready');
-        Materialize.toast('window.FirebasePlugin ' + typeof window.FirebasePlugin, 4000);
-        if(typeof FirebasePlugin !== 'undefined'){
+        Materialize.toast('FCMPlugin ' + typeof FCMPlugin, 4000);
+        if(typeof FCMPlugin !== 'undefined'){
 
-            window.FirebasePlugin.getToken(function(token) {
-                Materialize.toast(token, 50000);
-            }, function(error) {
-                Materialize.toast(error, 50000);
+            FCMPlugin.onTokenRefresh(function(token){
+                alert( token );
             });
 
-            window.FirebasePlugin.subscribe("all", function(subscribtion){
-                Materialize.toast('subscribtion ' + subscribtion, 5000);
+            FCMPlugin.getToken(function(token){
+                alert(token);
+            });
+
+            FCMPlugin.subscribeToTopic('all');
+
+            FCMPlugin.onNotification(function(data){
+                if(data.wasTapped){
+                  //Notification was received on device tray and tapped by the user.
+                  alert( JSON.stringify(data) );
+                }else{
+                  //Notification was received in foreground. Maybe the user needs to be notified.
+                  alert( JSON.stringify(data) );
+                }
             });
 
         }
