@@ -36,6 +36,14 @@ var app = {
         navigator.splashscreen.hide();
         app.receivedEvent('deviceready');
         Materialize.toast('window.FirebasePlugin ' + typeof window.FirebasePlugin, 4000);
+        if(typeof FirebasePlugin !== 'undefined'){
+            window.FirebasePlugin.onNotificationOpen(function(notification) {
+                Materialize.toast('notification ' + notification, 5000);
+            }, function(error) {
+                Materialize.toast('error ' + error, 5000);
+            });
+        }
+
         // if(typeof PushNotification !== 'undefined'){
         //     var push = PushNotification.init({
         //         android : {
