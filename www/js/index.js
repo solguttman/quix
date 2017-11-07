@@ -35,64 +35,40 @@ var app = {
     onDeviceReady: function() {
         navigator.splashscreen.hide();
         app.receivedEvent('deviceready');
-        Materialize.toast('FCMPlugin ' + typeof FCMPlugin, 4000);
-        if(typeof FCMPlugin !== 'undefined'){
-
-            FCMPlugin.onTokenRefresh(function(token){
-                alert( token );
-            });
-
-            FCMPlugin.getToken(function(token){
-                alert(token);
-            });
-
-            FCMPlugin.subscribeToTopic('all');
-
-            FCMPlugin.onNotification(function(data){
-                if(data.wasTapped){
-                  //Notification was received on device tray and tapped by the user.
-                  alert( JSON.stringify(data) );
-                }else{
-                  //Notification was received in foreground. Maybe the user needs to be notified.
-                  alert( JSON.stringify(data) );
+        Materialize.toast('PushNotification ' + typeof PushNotification, 4000);
+        if(typeof PushNotification !== 'undefined'){
+            var push = PushNotification.init({
+                android : {
+                    senderID : "767712014853"
+                },
+                ios : {
+                    senderID : "767712014853",
+                    sound: true,
+                    vibration: true,
+                    badge: true
                 }
             });
 
+            push.on('registration', function(data){
+                console.log(data.registrationId);
+                Materialize.toast('ID: ' + data.registrationId, 60000);
+                Materialize.toast('subscribe ' + typeof push.subscribe, 4000);
+                push.subscribe('all', function(success){
+                    Materialize.toast('Subscribed ' + success, 40000);
+                }, function(error){
+                    Materialize.toast('Error ' + error, 40000);
+                });
+            });
+
+            push.on('error', function(error){
+                Materialize.toast('Error ' + error, 4000);
+            });
+
+            push.on('notification', function(data){
+                Materialize.toast('ALERT!!!', 4000);
+                navigator.notification.alert(data.message, null, data.title);
+            });
         }
-
-        // if(typeof PushNotification !== 'undefined'){
-        //     var push = PushNotification.init({
-        //         android : {
-        //             //senderID : "767712014853"
-        //         },
-        //         ios : {
-        //             //senderID : "767712014853",
-        //             sound: true,
-        //             vibration: true,
-        //             badge: true
-        //         }
-        //     });
-
-        //     push.on('registration', function(data){
-        //         console.log(data.registrationId);
-        //         Materialize.toast('ID: ' + data.registrationId, 60000);
-        //         Materialize.toast('subscribe ' + typeof push.subscribe, 4000);
-        //         push.subscribe('all', function(success){
-        //             Materialize.toast('Subscribed ' + success, 40000);
-        //         }, function(error){
-        //             Materialize.toast('Error ' + error, 40000);
-        //         });
-        //     });
-
-        //     push.on('error', function(error){
-        //         Materialize.toast('Error ' + error, 4000);
-        //     });
-
-        //     push.on('notification', function(data){
-        //         Materialize.toast('ALERT!!!', 4000);
-        //         navigator.notification.alert(data.message, null, data.title);
-        //     });
-        // }
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
