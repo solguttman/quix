@@ -10,7 +10,7 @@
     <content src="index.html" />
 
     <platform name="android">
-        <resource-file src="google-services.json" target="/project/google-services.json" />
+        <resource-file src="google-services.json" target="/google-services.json" />
     </platform>
 
     <platform name="ios">
