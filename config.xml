@@ -24,6 +24,10 @@
         <variable name="SENDER_ID" value="767712014853" />
     </plugin>
 
+    <config-file platform="android" parent="/manifest">
+        <application android:theme="@android:style/Theme.NoTitleBar"></application>
+    </config-file>
+
 
     <icon src="www/icon.png" />
     <splash src="www/splash.png" />
