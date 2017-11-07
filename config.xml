@@ -29,7 +29,6 @@
     </config-file>
 
     <icon src="www/icon.png" />
-    <splash src="www/splash.png" />
 
     <access origin="*" />
     <allow-intent href="http://*/*" />
