@@ -10,12 +10,14 @@
     <content src="index.html" />
 
     <platform name="android">
-        <resource-file src="project/google-services.json" target="project/google-services.json" />
+        <resource-file src="google-services.json" target="google-services.json" />
     </platform>
 
     <platform name="ios">
-        <resource-file src="project/GoogleService-Info.plist" />
+        <resource-file src="GoogleService-Info.plist" />
     </platform>
+
+    <preference name="phonegap-version" value="cli-7.0.1" />
 
     <plugin name="cordova-plugin-splashscreen" source="npm" spec="~3.2.1" />
     <plugin name="cordova-plugin-whitelist" source="npm" spec="~1.2.1" />
