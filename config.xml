@@ -7,7 +7,7 @@
     <author email="support@evelt.com" href="https://evelt.com">
         Evelt Team
     </author>
-    <content src="index.html" />
+    <content src="app.html" />
 
     <platform name="android">
         <resource-file src="google-services.json" target="google-services.json" />

@@ -23,12 +23,14 @@
             new google.maps.places.Autocomplete(document.getElementById('address'), {});
         });
 
-        $(document).on('file', '.file:not(.has-value)', function(e, data){
+        $(document).on('file', '.file', function(e, data){
+
+            $(this).val(data.domain + data.path).addClass('has-value required').change();
+
+        }).on('file', '.file:not(.has-value)', function(e, data){
 
             var totalFiles = $('.files .file').length,
                 fileId = 'file' + ( totalFiles + 1 );
-
-            $(this).val(data.domain + data.path).change().addClass('has-value required');
 
             $('.files').append('<div class="col s6"><input class="file" id="'+ fileId +'" name="'+ fileId +'" type="text"></div>');
             $('#' + fileId).uploader({
@@ -55,12 +57,6 @@
                 next.removeClass('disabled');
             }else{
                 next.addClass('disabled');
-            }
-
-        }).on('keyup change input', '#description, .file', function(){
-
-            if($(this).val()){
-                $(this).closest('.app-page').find('.next').removeClass('disabled');
             }
 
         }).on('click', '[data-slide]', function(){
