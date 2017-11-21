@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "767712014853",
+    "firebase_url": "https://push-61b53.firebaseio.com",
+    "project_id": "push-61b53",
+    "storage_bucket": "push-61b53.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:767712014853:android:b4c90fe3a633e1d0",
+        "android_client_info": {
+          "package_name": "com.evelt.quix"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "767712014853-o79m5kp82ou24ujdlvh55ampud4uaado.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAF3g-3-k-2cxieGiqXaRlPmpFMwjVMfyw"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
