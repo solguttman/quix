@@ -305,7 +305,9 @@ textarea.materialize-textarea {
     top: 0;
     left: 0;
 }
-
+.init_loading{
+    background-image: none;
+}
 .loader img {
     width: 100px;
     transition-timing-function: ease;
