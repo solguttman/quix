@@ -327,3 +327,30 @@ textarea.materialize-textarea {
         -webkit-transform: rotate(360deg);
     }
 }
+@-moz-keyframes spinLoader {
+    from {
+        -moz-transform: rotate(0deg);
+    }
+
+    to {
+        -moz-transform: rotate(360deg);
+    }
+}
+@-o-keyframes spinLoader {
+    from {
+        -o-transform: rotate(0deg);
+    }
+
+    to {
+        -o-transform: rotate(360deg);
+    }
+}
+@keyframes spinLoader {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
