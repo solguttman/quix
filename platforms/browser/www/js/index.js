@@ -81,7 +81,7 @@ var app = {
         $('.loader').addClass('loading').fadeIn(300);
         setTimeout(function(){
             $('.loader').fadeOut(300).removeClass('loading');
-        }, 3000);
+        }, 4000);
 
         console.log('Received Event: ' + id);
     }
