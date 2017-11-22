@@ -379,7 +379,7 @@
     function hideLoader(){
         setTimeout(function(){
             $('.loader').fadeOut(300).removeClass('loading');
-        }, 2000);
+        }, 3000);
     }
 
 
