@@ -128,34 +128,6 @@
             $('#date_root').appendTo('body');
         }
 
-        if(isApp){
-            $('.ev-uploader').on('click', function(){
-                navigator.camera.getPicture(function(imageUri) {
-
-                    // var banner = document.getElementById('mainBanner');
-
-                    // IMAGE_URL = imageUri;
-
-                    // banner.src = imageUri;
-
-                    // navigator.camera.cleanup();
-
-                    // setTimeout(function(){
-                    //     $('#modal').modal('open');
-                    // },300);
-
-                    console.log('imageUri',imageUri);
-                }, function(error){
-
-                }, {
-                    quality: 50,
-                    destinationType: Camera.DestinationType.FILE_URI,
-                    correctOrientation: true
-                });
-                return false;
-            });
-        }
-
         if(document.getElementById('address')){
             if(typeof google === 'undefined'){
                 $.getScript('https://maps.googleapis.com/maps/api/js?key=AIzaSyDIaszVrabk86d_NTTJkHQlhshQ1gkLjmc&libraries=places', function(){
