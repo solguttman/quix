@@ -1,7 +1,8 @@
 (function($) {
 
     var API_URL = 'https://qapi.evelthost.com/',
-        USER_TOKEN = localStorage.getItem('QUIX_USER_TOKEN');
+        USER_TOKEN = localStorage.getItem('QUIX_USER_TOKEN'),
+        isApp = navigator.userAgent.match(/(iPhone|iPod|iPad|Android|BlackBerry|IEMobile)/);
 
     $(function() {
 
@@ -66,7 +67,17 @@
     }
 
     function initLoginPage(){
-        hideLoader();
+        if(document.getElementById('signup_address')){
+            if(typeof google === 'undefined'){
+                $.getScript('https://maps.googleapis.com/maps/api/js?key=AIzaSyDIaszVrabk86d_NTTJkHQlhshQ1gkLjmc&libraries=places', function(){
+                    new google.maps.places.Autocomplete(document.getElementById('signup_address'), {});
+                    hideLoader();
+                });
+            }else{
+                new google.maps.places.Autocomplete(document.getElementById('signup_address'), {});
+                hideLoader();
+            }
+        }
     }
 
     function loadLoginPage(){
@@ -103,13 +114,6 @@
         hideLoader();
         $('select').material_select();
 
-        if (!navigator.userAgent.match(/(iPhone|iPod|iPad|Android|BlackBerry|IEMobile)/)) {
-            $('.datepicker').pickadate({
-                min: true
-            });
-            $('#date_root').appendTo('body');
-        }
-
         if(typeof 'Uplader' !== 'undefined'){
             $('.file').uploader({
                 label : '<i class="material-icons">camera_alt</i><br>Upload a picture of the issue.',
@@ -117,6 +121,40 @@
             });
         }
 
+        if (!isApp) {
+            $('.datepicker').pickadate({
+                min: true
+            });
+            $('#date_root').appendTo('body');
+        }
+
+        if(isApp){
+            $('.ev-uploader').on('click', function(){
+                navigator.camera.getPicture(function(imageUri) {
+
+                    // var banner = document.getElementById('mainBanner');
+
+                    // IMAGE_URL = imageUri;
+
+                    // banner.src = imageUri;
+
+                    // navigator.camera.cleanup();
+
+                    // setTimeout(function(){
+                    //     $('#modal').modal('open');
+                    // },300);
+
+                    console.log('imageUri',imageUri);
+                }, function(error){
+
+                }, {
+                    quality: 50,
+                    destinationType: Camera.DestinationType.FILE_URI,
+                    correctOrientation: true
+                });
+                return false;
+            });
+        }
 
         if(document.getElementById('address')){
             if(typeof google === 'undefined'){
@@ -130,6 +168,15 @@
     }
 
     function initAccountPage(){
+        if(document.getElementById('account_address')){
+            if(typeof google === 'undefined'){
+                $.getScript('https://maps.googleapis.com/maps/api/js?key=AIzaSyDIaszVrabk86d_NTTJkHQlhshQ1gkLjmc&libraries=places', function(){
+                    new google.maps.places.Autocomplete(document.getElementById('account_address'), {});
+                });
+            }else{
+                new google.maps.places.Autocomplete(document.getElementById('account_address'), {});
+            }
+        }
         $.ajax({
             url: API_URL + 'users/' + USER_TOKEN,
             type: "GET",
