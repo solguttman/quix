@@ -293,7 +293,7 @@ textarea.materialize-textarea {
 .loader {
     position: fixed;
     background-color: #fff;
-    background-image: url('../images/splash.png');
+    background-image: url('../splash.png');
     background-position: center;
     background-size: cover;
     width: 100%;
