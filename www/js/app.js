@@ -1,6 +1,7 @@
 (function($) {
 
-    var USER_TOKEN = localStorage.getItem('QUIX_USER_TOKEN');
+    var API_URL = 'https://qapi.evelthost.com/',
+        USER_TOKEN = localStorage.getItem('QUIX_USER_TOKEN');
 
     $(function() {
 
@@ -129,7 +130,7 @@
 
     function initAccountPage(){
         $.ajax({
-            url: 'https://qapi.evelthost.com/users/' + USER_TOKEN,
+            url: API_URL + 'users/' + USER_TOKEN,
             type: "GET",
             beforeSend: function(xhr){xhr.setRequestHeader('token', USER_TOKEN);},
             success: function(account) {
@@ -140,7 +141,7 @@
                 $('#account_phone').val(account.phone);
                 hideLoader();
                 // $.ajax({
-                //     url: 'https://qapi.evelthost.com/requests/' + USER_TOKEN,
+                //     url: API_URL + 'requests/' + USER_TOKEN,
                 //     type: "GET",
                 //     beforeSend: function(xhr){xhr.setRequestHeader('token', USER_TOKEN);},
                 //     success: function(account) {
@@ -204,7 +205,7 @@
             files.push($(this).val());
         });
 
-        $.post('https://qapi.evelthost.com/requests', JSON.stringify({
+        $.post(API_URL + 'requests', JSON.stringify({
             location : $('#address').val(),
             description : $('#description').val(),
             serviceDate : getEpoch($('#date').val() + ' ' + $('#time').val()),
@@ -281,7 +282,7 @@
     function login(){
 
         showLoader();
-        $.post('https://qapi.evelthost.com/login', JSON.stringify({
+        $.post(API_URL + 'login', JSON.stringify({
             email : $('#login_email').val(),
             password : $('#login_password').val()
         })).done(function(data) {
@@ -312,7 +313,7 @@
         }
 
         showLoader();
-        $.post('https://qapi.evelthost.com/signup', JSON.stringify({
+        $.post(API_URL + 'signup', JSON.stringify({
             name : $('#signup_name').val(),
             email : $('#signup_email').val(),
             address : $('#signup_address').val(),
@@ -357,13 +358,13 @@
         }
 
         showLoader();
-        $.post('https://qapi.evelthost.com/users/' + USER_TOKEN, JSON.stringify(account)).done(function(data) {
+        $.post(API_URL + 'users/' + USER_TOKEN, JSON.stringify(account)).done(function(data) {
             hideLoader();
             data = JSON.parse(data);
             if(data.error){
                 $('.signup-error-message').text(data.error);
             }else{
-
+                $('.account-success-message').text('Account Updated!');
             }
         }).fail(function(data) {
             hideLoader();
