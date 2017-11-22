@@ -112,7 +112,8 @@
 
         if(typeof 'Uplader' !== 'undefined'){
             $('.file').uploader({
-                label : '<i class="material-icons">camera_alt</i><br>Upload a picture of the issue.'
+                label : '<i class="material-icons">camera_alt</i><br>Upload a picture of the issue.',
+                accept : '*'
             });
         }
 
