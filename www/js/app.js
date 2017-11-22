@@ -1,6 +1,6 @@
 (function($) {
 
-    var API_URL = 'https://qapi.evelthost.com/',
+    var API_URL = 'https://api.quixservice.com/',
         USER_TOKEN = localStorage.getItem('QUIX_USER_TOKEN'),
         isApp = navigator.userAgent.match(/(iPhone|iPod|iPad|Android|BlackBerry|IEMobile)/);
 
