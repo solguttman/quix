@@ -78,10 +78,10 @@ var app = {
     // Update DOM on a Received Event
     receivedEvent: function(id) {
 
-        $('.loader').addClass('loading').fadeIn(300);
-        setTimeout(function(){
-            $('.loader').fadeOut(300).removeClass('loading');
-        }, 5000);
+        // $('.loader').addClass('loading').fadeIn(300);
+        // setTimeout(function(){
+        //     $('.loader').fadeOut(300).removeClass('loading');
+        // }, 5000);
 
         console.log('Received Event: ' + id);
     }
