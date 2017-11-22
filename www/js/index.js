@@ -35,10 +35,6 @@ var app = {
     onDeviceReady: function() {
         app.receivedEvent('deviceready');
 
-        if(navigator.splashscreen){
-            navigator.splashscreen.hide();
-        }
-
         //Materialize.toast('PushNotification ' + typeof PushNotification, 4000);
         if(typeof PushNotification !== 'undefined'){
             var push = PushNotification.init({
@@ -81,6 +77,9 @@ var app = {
         $('.loader').addClass('init_loading').addClass('loading').fadeIn(300);
         setTimeout(function(){
             $('.loader').fadeOut(300).removeClass('init_loading').removeClass('loading');
+            if(navigator.splashscreen){
+                navigator.splashscreen.hide();
+            }
         }, 3000);
 
         console.log('Received Event: ' + id);
