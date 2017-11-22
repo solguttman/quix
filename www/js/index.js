@@ -34,6 +34,11 @@ var app = {
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function() {
         app.receivedEvent('deviceready');
+
+        if(navigator.splashscreen){
+            navigator.splashscreen.hide();
+        }
+
         //Materialize.toast('PushNotification ' + typeof PushNotification, 4000);
         if(typeof PushNotification !== 'undefined'){
             var push = PushNotification.init({
@@ -73,9 +78,10 @@ var app = {
     // Update DOM on a Received Event
     receivedEvent: function(id) {
 
+        $('.loader').addClass('loading').fadeIn(300);
         setTimeout(function(){
-            $('.loader').fadeOut(300);
-        },3000);
+            $('.loader').fadeOut(300).removeClass('loading');
+        }, 2000);
 
         console.log('Received Event: ' + id);
     }
