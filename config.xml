@@ -8,9 +8,18 @@
         Evelt Team
     </author>
     <content src="index.html" />
+    <platform name="android">
+        <resource-file src="google-services.json" target="google-services.json" />
+    </platform>
+    <platform name="ios">
+        <resource-file src="GoogleService-Info.plist" />
+    </platform>
 
     <plugin name="cordova-plugin-splashscreen" source="npm" />
     <plugin name="cordova-plugin-whitelist" source="npm" spec="~1.2.1" />
+    <plugin name="phonegap-plugin-push" spec="~1.8.0">
+        <variable name="SENDER_ID" value="767712014853" />
+    </plugin>
 
     <config-file parent="/manifest" platform="android">
         <application android:theme="@android:style/Theme.Light.NoTitleBar" />
@@ -52,7 +61,7 @@
         <icon height="144" platform="ios" src="res/icons/ios/icon-72@2x.png" width="144" />
         <icon height="76" platform="ios" src="res/icons/ios/icon-76.png" width="76" />
         <icon height="152" platform="ios" src="res/icons/ios/icon-76@2x.png" width="152" />
-        <icon height="29" platform="ios" src="res/icons/ios/icon-small.png" width="29" />
+        <icon height="29" platform="ios" src="res/icons/iosApp/Icon-App-29x29@3x.png" width="29" />
         <icon height="58" platform="ios" src="res/icons/ios/icon-small@2x.png" width="58" />
         <icon height="87" platform="ios" src="res/icons/ios/icon-small@3x.png" width="87" />
         <splash height="1136" platform="ios" src="res/screens/ios/Default-568h@2x~iphone.png" width="640" />
