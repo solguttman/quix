@@ -1,0 +1,81 @@
+<icon src="icon.png"></icon>
+<icon platform="ios" width="29" height="29" src="res/ios/icons/Icon-Small.png"></icon>
+<icon platform="ios" width="58" height="58" src="res/ios/icons/Icon-Small@2x.png"></icon>
+<icon platform="ios" width="87" height="87" src="res/ios/icons/Icon-Small@3x.png"></icon>
+<icon platform="ios" width="40" height="40" src="res/ios/icons/Icon-Small-40.png"></icon>
+<icon platform="ios" width="80" height="80" src="res/ios/icons/Icon-Small-40@2x.png"></icon>
+<icon platform="ios" width="120" height="120" src="res/ios/icons/Icon-Small-40@3x.png"></icon>
+<icon platform="ios" width="50" height="50" src="res/ios/icons/Icon-Small-50.png"></icon>
+<icon platform="ios" width="100" height="100" src="res/ios/icons/Icon-Small-50@2x.png"></icon>
+<icon platform="ios" width="57" height="57" src="res/ios/icons/Icon.png"></icon>
+<icon platform="ios" width="114" height="114" src="res/ios/icons/Icon@2x.png"></icon>
+<icon platform="ios" width="120" height="120" src="res/ios/icons/Icon-60@2x.png"></icon>
+<icon platform="ios" width="180" height="180" src="res/ios/icons/Icon-60@3x.png"></icon>
+<icon platform="ios" width="72" height="72" src="res/ios/icons/Icon-72.png"></icon>
+<icon platform="ios" width="144" height="144" src="res/ios/icons/Icon-72@2x.png"></icon>
+<icon platform="ios" width="76" height="76" src="res/ios/icons/Icon-76.png"></icon>
+<icon platform="ios" width="152" height="152" src="res/ios/icons/Icon-76@2x.png"></icon>
+<icon platform="ios" width="167" height="167" src="res/ios/icons/Icon-83.5@2x.png"></icon>
+<icon platform="ios" width="48" height="48" src="res/ios/icons/AppIcon24x24@2x.png"></icon>
+<icon platform="ios" width="55" height="55" src="res/ios/icons/AppIcon27.5x27.5@2x.png"></icon>
+<icon platform="ios" width="58" height="58" src="res/ios/icons/AppIcon29x29@2x.png"></icon>
+<icon platform="ios" width="80" height="80" src="res/ios/icons/AppIcon40x40@2x.png"></icon>
+<icon platform="ios" width="87" height="87" src="res/ios/icons/AppIcon29x29@3x.png"></icon>
+<icon platform="ios" width="88" height="88" src="res/ios/icons/AppIcon44x44@2x.png"></icon>
+<icon platform="ios" width="172" height="172" src="res/ios/icons/AppIcon86x86@2x.png"></icon>
+<icon platform="ios" width="196" height="196" src="res/ios/icons/AppIcon98x98@2x.png"></icon>
+<icon platform="ios" width="512" height="512" src="res/ios/icons/ItunesArtwork.png"></icon>
+<icon platform="ios" width="1024" height="1024" src="res/ios/icons/ItunesArtwork@2x.png"></icon>
+<icon platform="android" qualifier="ldpi" src="res/android/icons/icon_ldpi.png"></icon>
+<icon platform="android" qualifier="mdpi" src="res/android/icons/icon_mdpi.png"></icon>
+<icon platform="android" qualifier="hdpi" src="res/android/icons/icon_hdpi.png"></icon>
+<icon platform="android" qualifier="xhdpi" src="res/android/icons/icon_xhdpi.png"></icon>
+<icon platform="android" qualifier="xxhdpi" src="res/android/icons/icon_xxhdpi.png"></icon>
+<icon platform="android" qualifier="xxxhdpi" src="res/android/icons/icon_xxxhdpi.png"></icon>
+<icon platform="winphone" width="30" height="30" src="res/windows/icons/Square30x30Logo.scale-100.png"></icon>
+<icon platform="winphone" width="44" height="44" src="res/windows/icons/Square44x44Logo.scale-100.png"></icon>
+<icon platform="winphone" width="106" height="106" src="res/windows/icons/Square44x44Logo.scale-240.png"></icon>
+<icon platform="winphone" width="70" height="70" src="res/windows/icons/Square70x70Logo.scale-100.png"></icon>
+<icon platform="winphone" width="71" height="71" src="res/windows/icons/Square71x71Logo.scale-100.png"></icon>
+<icon platform="winphone" width="170" height="170" src="res/windows/icons/Square71x71Logo.scale-240.png"></icon>
+<icon platform="winphone" width="150" height="150" src="res/windows/icons/Square150x150Logo.scale-100.png"></icon>
+<icon platform="winphone" width="300" height="300" src="res/windows/icons/Square300x300Logo.scale-100.png"></icon>
+<icon platform="winphone" width="360" height="360" src="res/windows/icons/Square150x150Logo.scale-240.png"></icon>
+<icon platform="winphone" width="310" height="310" src="res/windows/icons/Square310x310Logo.scale-100.png"></icon>
+<icon platform="winphone" width="310" height="150" src="res/windows/icons/Wide310x150Logo.scale-100.png"></icon>
+<icon platform="winphone" width="744" height="360" src="res/windows/icons/Wide310x150Logo.scale-240.png"></icon>
+<icon platform="winphone" width="50" height="50" src="res/windows/icons/StoreLogo50x50Logo.scale-100.png"></icon>
+<icon platform="winphone" width="120" height="120" src="res/windows/icons/StoreLogo50x50Logo.scale-240.png"></icon>
+<icon platform="android" width="512" height="512" src="resources/android/Hi-res.png"></icon>
+<icon platform="android" width="1024" height="500" src="resources/android/Feature Graphic.png"></icon>
+<icon platform="android" width="180" height="120" src="resources/android/Promo Graphic.png"></icon>
+<icon platform="android" width="1280" height="720" src="resources/android/TV Banner.png"></icon>
+<icon platform="winphone" width="300" height="300" src="resources/windows/Store300x300.png"></icon>
+<icon platform="winphone" width="1080" height="1080" src="resources/windows/Store1080x1080.png"></icon>
+<icon platform="winphone" width="720" height="1080" src="resources/windows/Store720x1080.png"></icon>
+<splash src="splash.png"></splash>
+<splash platform="ios" width="320" height="480" src="res/ios/splash/Default.png"></splash>
+<splash platform="ios" width="640" height="960" src="res/ios/splash/Default@2x.png"></splash>
+<splash platform="ios" width="640" height="1136" src="res/ios/splash/Default-568h@2x.png"></splash>
+<splash platform="ios" width="750" height="1334" src="res/ios/splash/Default-667h@2x.png"></splash>
+<splash platform="ios" width="768" height="1024" src="res/ios/splash/Default-Portrait.png"></splash>
+<splash platform="ios" width="1024" height="768" src="res/ios/splash/Default-Landscape.png"></splash>
+<splash platform="ios" width="1536" height="2048" src="res/ios/splash/Default-Portrait@2x.png"></splash>
+<splash platform="ios" width="2048" height="1546" src="res/ios/splash/Default-Landscape@2x.png"></splash>
+<splash platform="ios" width="1242" height="2208" src="res/ios/splash/Default-Portrait-736@3x.png"></splash>
+<splash platform="ios" width="2208" height="1242" src="res/ios/splash/Default-Landscape-736@3x.png"></splash>
+<splash platform="android" qualifier="port-ldpi" src="res/android/splash/splash_portrait_ldpi.png"></splash>
+<splash platform="android" qualifier="land-ldpi" width="320" height="200" src="res/android/splash/splash_landscape_ldpi.png"></splash>
+<splash platform="android" qualifier="port-mdpi" src="res/android/splash/splash_portrait_mdpi.png"></splash>
+<splash platform="android" qualifier="land-mdpi" width="480" height="320" src="res/android/splash/splash_landscape_mdpi.png"></splash>
+<splash platform="android" qualifier="port-hdpi" src="res/android/splash/splash_portrait_hdpi.png"></splash>
+<splash platform="android" qualifier="land-hdpi" width="800" height="480" src="res/android/splash/splash_landscape_hdpi.png"></splash>
+<splash platform="android" qualifier="port-xhdpi" src="res/android/splash/splash_portrait_xhdpi.png"></splash>
+<splash platform="android" qualifier="land-xhdpi" width="1920" height="1080" src="res/android/splash/splash_landscape_xhdpi.png"></splash>
+<splash platform="android" qualifier="port-xxhdpi" src="res/android/splash/splash_portrait_xxhdpi.png"></splash>
+<splash platform="android" qualifier="land-xxhdpi" width="2880" height="1440" src="res/android/splash/splash_landscape_xxhdpi.png"></splash>
+<splash platform="android" qualifier="port-xxxhdpi" src="res/android/splash/splash_portrait_xxxhdpi.png"></splash>
+<splash platform="android" qualifier="land-xxxhdpi" width="3840" height="2160" src="res/android/splash/splash_landscape_xxxhdpi.png"></splash>
+<splash platform="winphone" width="480" height="800" src="res/windows/splash/splash.png"></splash>
+<splash platform="winphone" width="620" height="300" src="res/windows/splash/SplashScreen.scale-100.png"></splash>
+<splash platform="winphone" width="1152" height="1920" src="res/windows/splash/SplashScreenPhone.scale-240.png"></splash>
