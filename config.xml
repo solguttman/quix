@@ -25,6 +25,12 @@
         <application android:theme="@android:style/Theme.Light.NoTitleBar" />
     </config-file>
 
+    <preference name="phonegap-version" value="cli-7.0.1" />
+    <preference name="AutoHideSplashScreen" value="false" />
+    <preference name="SplashScreenDelay" value="10000" />
+    <preference name="ShowSplashScreenSpinner" value="false" />
+    <preference name="SplashMaintainAspectRatio" value="true" />
+
     <icon src="icon.png" />
     <splash src="splash.png" />
 
@@ -75,12 +81,7 @@
     <splash height="1024" platform="ios" src="res/screens/ios/Default-Portrait~ipad.png" width="768" />
     <splash height="960" platform="ios" src="res/screens/ios/Default@2x~iphone.png" width="640" />
     <splash height="480" platform="ios" src="res/screens/ios/Default~iphone.png" width="320" />
-    
 
-    <preference name="AutoHideSplashScreen" value="false" />
-    <preference name="SplashScreenDelay" value="10000" />
-    <preference name="ShowSplashScreenSpinner" value="false" />
-    <preference name="SplashMaintainAspectRatio" value="true" />
 
     <access origin="*" />
     <allow-intent href="http://*/*" />
