@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.evelt.quix" version="1.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:android="http://schemas.android.com/apk/res/android" xmlns:gap="http://phonegap.com/ns/1.0">
+<widget id="com.evelt.quix" version="1.0.2" xmlns="http://www.w3.org/ns/widgets" xmlns:android="http://schemas.android.com/apk/res/android" xmlns:gap="http://phonegap.com/ns/1.0">
     <name>Quix</name>
     <description>
         Quix.
@@ -14,12 +14,9 @@
     <platform name="ios">
         <resource-file src="GoogleService-Info.plist" />
     </platform>
-
     <plugin name="cordova-plugin-splashscreen" source="npm" />
     <plugin name="cordova-plugin-whitelist" source="npm" spec="~1.2.1" />
-    <plugin name="phonegap-plugin-push" spec="~1.8.0">
-        <variable name="SENDER_ID" value="767712014853" />
-    </plugin>
+    <plugin name="onesignal-cordova-plugin" spec="^2.2.4" />
 
     <config-file parent="/manifest" platform="android">
         <application android:theme="@android:style/Theme.Light.NoTitleBar" />
@@ -33,7 +30,6 @@
 
     <icon src="icon.png" />
     <splash src="splash.png" />
-
     <platform name="android">
         <icon density="ldpi" src="res/icons/android/drawable-ldpi-icon.png" />
         <icon density="mdpi" src="res/icons/android/drawable-mdpi-icon.png" />
@@ -54,24 +50,29 @@
         <splash density="port-xxhdpi" src="res/screens/android/drawable-port-xxhdpi-screen.png" />
         <splash density="port-xxxhdpi" src="res/screens/android/drawable-port-xxxhdpi-screen.png" />
     </platform>
-   	<platform name="ios">
-		<icon src="res/icons/iosApp/Icon-App-57x57@1x.png" width="57" height="57" />
-		<icon src="res/icons/iosApp/Icon-App-72x72@2x.png" width="144" height="144" />
-		<icon src="res/icons/iosApp/Icon-App-72x72@1x.png" width="72" height="72" />
-		<icon src="res/icons/iosApp/Icon-App-57x57@2x.png" width="114" height="114" />
-		<icon src="res/icons/iosApp/Icon-Small-50x50@2x.png" width="100" height="100" />
-		<icon src="res/icons/iosApp/Icon-App-60x60@1.png" width="60" height="60" />
-		<icon src="res/icons/iosApp/Icon-App-60x60@2x.png" width="120" height="120" />
-		<icon src="res/icons/iosApp/Icon-App-60x60@3x.png" width="180" height="180" />
-		<icon src="res/icons/iosApp/Icon-App-76x76@1x.png" width="76" height="76" />
-		<icon src="res/icons/iosApp/Icon-App-76x76@2x.png" width="152" height="152" />
-		<icon src="res/icons/iosApp/Icon-App-29x29@1x.png" width="29" height="29" />
-		<icon src="res/icons/iosApp/Icon-App-29x29@2x.png" width="58" height="58" />
-		<icon src="res/icons/iosApp/Icon-App-29x29@3x.png" width="87" height="87" />
-		<icon src="res/icons/iosApp/Icon-App-40x40@1x.png" width="40" height="40" />
-		<icon src="res/icons/iosApp/Icon-App-40x40@2x.png" width="80" height="80" />
-	</platform>
-
+    <platform name="ios">
+        <icon height="57" src="res/icons/iosApp/Icon-App-57x57@1x.png" width="57" />
+        <icon height="144" src="res/icons/iosApp/Icon-App-72x72@2x.png" width="144" />
+        <icon height="72" src="res/icons/iosApp/Icon-App-72x72@1x.png" width="72" />
+        <icon height="114" src="res/icons/iosApp/Icon-App-57x57@2x.png" width="114" />
+        <icon height="100" src="res/icons/iosApp/Icon-Small-50x50@2x.png" width="100" />
+        <icon height="60" src="res/icons/iosApp/Icon-App-60x60@1.png" width="60" />
+        <icon height="120" src="res/icons/iosApp/Icon-App-60x60@2x.png" width="120" />
+        <icon height="180" src="res/icons/iosApp/Icon-App-60x60@3x.png" width="180" />
+        <icon height="76" src="res/icons/iosApp/Icon-App-76x76@1x.png" width="76" />
+        <icon height="152" src="res/icons/iosApp/Icon-App-76x76@2x.png" width="152" />
+        <icon height="29" src="res/icons/iosApp/Icon-App-29x29@1x.png" width="29" />
+        <icon height="58" src="res/icons/iosApp/Icon-App-29x29@2x.png" width="58" />
+        <icon height="87" src="res/icons/iosApp/Icon-App-29x29@3x.png" width="87" />
+        <icon height="40" src="res/icons/iosApp/Icon-App-40x40@1x.png" width="40" />
+        <icon height="80" src="res/icons/iosApp/Icon-App-40x40@2x.png" width="80" />
+        <splash src="res/screens/ios/Default-736h.png" width="1242" height="2208" /> 
+        <splash src="res/screens/ios/Default-Landscape-736h.png" width="2208" height="1242" /> 
+        <splash src="res/screens/ios/Default-667h.png" width="750" height="1334" /> 
+        <splash src="res/screens/ios/Default-568h@2x~iphone.png" width="640" height="1136" /> 
+        <splash src="res/screens/ios/Default@2x~iphone.png" width="640" height="960" /> 
+        <splash src="res/screens/ios/Default~iphone.png" width="320" height="480" /> 
+    </platform>
     <access origin="*" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
@@ -86,4 +87,5 @@
         <allow-intent href="itms:*" />
         <allow-intent href="itms-apps:*" />
     </platform>
+    <engine name="browser" spec="~5.0.1" />
 </widget>
