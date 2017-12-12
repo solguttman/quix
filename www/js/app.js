@@ -33,18 +33,38 @@
 
             $('.files').append('<div class="col s12"><input class="file" id="'+ fileId +'" name="'+ fileId +'" type="text"></div>');
             $('#' + fileId).uploader({
-                label : '<i class="material-icons">add</i>'
+                label : '<i class="material-icons">add</i>',
+                accept : '*'
             });
 
-        }).on('click', '#nav-mobile li', function(){
+        }).on('click', '[data-page]', function(){
 
             var page = $(this).data('page');
+
+            $('.button-collapse').sideNav('hide');
+            
             if(page === 'request'){
                 loadRequestPage();
             }
 
             if(page === 'account'){
                 loadAccountPage();
+            }
+
+            if(page === 'about'){
+                loadAboutPage();
+            }
+
+            if(page === 'services'){
+                loadServicesPage();
+            }
+
+            if(page === 'faq'){
+                loadFaqPage();
+            }
+
+            if(page === 'contact'){
+                loadContactPage();
             }
 
             if(page === 'call'){
@@ -108,6 +128,30 @@
             loadLoginPage();
         }
 
+    }
+
+    function loadAboutPage(){
+        $('.app').load('views/about.html', function(){
+            hideLoader();
+        });
+    }
+
+    function loadServicesPage(){
+        $('.app').load('views/services.html', function(){
+            hideLoader();
+        });
+    }
+
+    function loadFaqPage(){
+        $('.app').load('views/faq.html', function(){
+            hideLoader();
+        });
+    }
+
+    function loadContactPage(){
+        $('.app').load('views/contact.html', function(){
+            hideLoader();
+        });
     }
 
     function initRequstPage(){

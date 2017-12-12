@@ -104,7 +104,6 @@ input:not(.browser-default), textarea:not(.browser-default) {
     box-shadow: none !important;
 }
 
-
 textarea.materialize-textarea {
     padding: .75rem 0;
 }
@@ -243,29 +242,53 @@ textarea.materialize-textarea {
 .order-complete img {
     height: 40px;
 }
-.login-page,.signup-page, .account-page{
+
+.login-page,.signup-page, .account-page {
     display: flex;
     flex-direction: column;
     height: 100%;
     justify-content: space-between;
 }
-.login-page input,
-.signup-page input[type=password],
-.account-page input[type=password]{
+
+.login-page input, .signup-page input[type=password], .account-page input[type=password] {
     border: 1px solid #4dd0e1 !important;
     text-align: center;
     width: 80% !important;
     margin-bottom: 0 !important;
 }
-.login-page input{
+
+.login-page input {
     width: 100% !important;
 }
-.error-message{
+
+.error-message {
     width: 70vw;
     white-space: normal;
     margin: auto;
     line-height: initial;
 }
+
+.info-page {
+    height: calc(100vh - 56px);
+    overflow: auto;
+    width: 100%;
+}
+
+.info-page .flow-text.title {
+    font-size: 2rem;
+    padding-bottom: 20px;
+}
+
+.info-page .flow-text {
+    line-height: initial;
+    margin: 20px 0 0 0;
+    font-size: 1.2rem;
+}
+
+.info-page p {
+    margin-top: 0;
+}
+
 ::-webkit-input-placeholder {
     /* Chrome/Opera/Safari */
     font-size: 1.2rem;
@@ -305,9 +328,11 @@ textarea.materialize-textarea {
     top: 0;
     left: 0;
 }
-.init_loading{
+
+.init_loading {
     background-image: none;
 }
+
 .loader img {
     width: 100px;
     transition-timing-function: ease;
@@ -329,6 +354,7 @@ textarea.materialize-textarea {
         -webkit-transform: rotate(360deg);
     }
 }
+
 @-moz-keyframes spinLoader {
     from {
         -moz-transform: rotate(0deg);
@@ -338,6 +364,7 @@ textarea.materialize-textarea {
         -moz-transform: rotate(360deg);
     }
 }
+
 @-o-keyframes spinLoader {
     from {
         -o-transform: rotate(0deg);
@@ -347,6 +374,7 @@ textarea.materialize-textarea {
         -o-transform: rotate(360deg);
     }
 }
+
 @keyframes spinLoader {
     from {
         transform: rotate(0deg);

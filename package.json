@@ -1,0 +1,20 @@
+{
+  "name": "com.evelt.quix",
+  "version": "1.0.2",
+  "displayName": "Quix",
+  "cordova": {
+    "platforms": [
+      "browser"
+    ],
+    "plugins": {
+      "cordova-plugin-splashscreen": {},
+      "cordova-plugin-whitelist": {},
+      "onesignal-cordova-plugin": {}
+    }
+  },
+  "dependencies": {
+    "cordova-browser": "~5.0.1",
+    "cordova-plugin-whitelist": "~1.2.1",
+    "onesignal-cordova-plugin": "^2.2.4"
+  }
+}

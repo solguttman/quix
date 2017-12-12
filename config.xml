@@ -8,26 +8,14 @@
         Evelt Team
     </author>
     <content src="index.html" />
-    <platform name="android">
-        <resource-file src="google-services.json" target="google-services.json" />
-    </platform>
-    <platform name="ios">
-        <resource-file src="GoogleService-Info.plist" />
-    </platform>
-    <plugin name="cordova-plugin-splashscreen" source="npm" />
-    <plugin name="cordova-plugin-whitelist" source="npm" spec="~1.2.1" />
-    <plugin name="onesignal-cordova-plugin" spec="^2.2.4" />
-
     <config-file parent="/manifest" platform="android">
         <application android:theme="@android:style/Theme.Light.NoTitleBar" />
     </config-file>
-
     <preference name="phonegap-version" value="cli-7.0.1" />
     <preference name="AutoHideSplashScreen" value="false" />
     <preference name="SplashScreenDelay" value="10000" />
     <preference name="ShowSplashScreenSpinner" value="false" />
     <preference name="SplashMaintainAspectRatio" value="true" />
-
     <icon src="icon.png" />
     <splash src="splash.png" />
     <platform name="android">
@@ -66,12 +54,12 @@
         <icon height="87" src="res/icons/iosApp/Icon-App-29x29@3x.png" width="87" />
         <icon height="40" src="res/icons/iosApp/Icon-App-40x40@1x.png" width="40" />
         <icon height="80" src="res/icons/iosApp/Icon-App-40x40@2x.png" width="80" />
-        <splash src="res/screens/ios/Default-736h.png" width="1242" height="2208" /> 
-        <splash src="res/screens/ios/Default-Landscape-736h.png" width="2208" height="1242" /> 
-        <splash src="res/screens/ios/Default-667h.png" width="750" height="1334" /> 
-        <splash src="res/screens/ios/Default-568h@2x~iphone.png" width="640" height="1136" /> 
-        <splash src="res/screens/ios/Default@2x~iphone.png" width="640" height="960" /> 
-        <splash src="res/screens/ios/Default~iphone.png" width="320" height="480" /> 
+        <splash height="2208" src="res/screens/ios/Default-736h.png" width="1242" />
+        <splash height="1242" src="res/screens/ios/Default-Landscape-736h.png" width="2208" />
+        <splash height="1334" src="res/screens/ios/Default-667h.png" width="750" />
+        <splash height="1136" src="res/screens/ios/Default-568h@2x~iphone.png" width="640" />
+        <splash height="960" src="res/screens/ios/Default@2x~iphone.png" width="640" />
+        <splash height="480" src="res/screens/ios/Default~iphone.png" width="320" />
     </platform>
     <access origin="*" />
     <allow-intent href="http://*/*" />
@@ -88,4 +76,7 @@
         <allow-intent href="itms-apps:*" />
     </platform>
     <engine name="browser" spec="~5.0.1" />
+    <plugin name="cordova-plugin-splashscreen" />
+    <plugin name="cordova-plugin-whitelist" spec="~1.2.1" />
+    <plugin name="onesignal-cordova-plugin" spec="^2.2.4" />
 </widget>

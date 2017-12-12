@@ -39,41 +39,15 @@ var app = {
             navigator.splashscreen.hide();
         }
 
-        //Materialize.toast('PushNotification ' + typeof PushNotification, 4000);
-        if(typeof PushNotification !== 'undefined'){
-            var push = PushNotification.init({
-                android : {
-                    senderID : "767712014853"
-                },
-                ios : {
-                    senderID : "767712014853",
-                    sound: true,
-                    vibration: true,
-                    badge: true
-                }
-            });
+        var notificationOpenedCallback = function(jsonData) {
+            //Materialize.toast('PushNotification opened', 4000);
+        };
 
-            push.on('registration', function(data){
-                //Materialize.toast('ID: ' + data.registrationId, 60000);
-                //Materialize.toast('subscribe ' + typeof push.subscribe, 4000);
-                push.subscribe('all', function(success){
-                    //Materialize.toast('Subscribed ' + success, 40000);
-                }, function(error){
-                    Materialize.toast('Error ' + error, 40000);
-                });
-            });
+        window.plugins.OneSignal
+        .startInit("1fc39c9c-c684-40ff-92ce-2303603c7063")
+        .handleNotificationOpened(notificationOpenedCallback)
+        .endInit();
 
-            push.on('error', function(error){
-                Materialize.toast('Error ' + error, 4000);
-            });
-
-            push.on('notification', function(data){
-                Materialize.toast('ALERT!!!', 4000);
-                navigator.notification.alert(data.message, null, data.title);
-            });
-        }else{
-            //Materialize.toast('Error PushNotification undefined', 1000);
-        }
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {

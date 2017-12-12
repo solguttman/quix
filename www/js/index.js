@@ -40,7 +40,7 @@ var app = {
         }
 
         var notificationOpenedCallback = function(jsonData) {
-            Materialize.toast('PushNotification opened', 4000);
+            //Materialize.toast('PushNotification opened', 4000);
         };
 
         window.plugins.OneSignal

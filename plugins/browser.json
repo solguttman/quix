@@ -66,6 +66,9 @@
     },
     "phonegap-plugin-push": {
       "PACKAGE_NAME": "com.evelt.quix"
+    },
+    "onesignal-cordova-plugin": {
+      "PACKAGE_NAME": "com.evelt.quix"
     }
   },
   "dependent_plugins": {
