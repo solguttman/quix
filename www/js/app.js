@@ -34,7 +34,7 @@
             $('.files').append('<div class="col s12"><input class="file" id="'+ fileId +'" name="'+ fileId +'" type="text"></div>');
             $('#' + fileId).uploader({
                 label : '<i class="material-icons">add</i>',
-                accept : '*'
+                accept : 'image/*;capture=camera'
             });
 
         }).on('click', '[data-page]', function(){
@@ -83,7 +83,10 @@
             .on('change', '#useContactPerson', toggleContactPerson)
             .on('click', '.login', login)
             .on('click', '.signup', signup)
-            .on('click', '.account-save', saveAccount);
+            .on('click', '.account-save', saveAccount)
+            .on('click', '.no-thank-you', function(){
+                $('.set-up-account').hide();
+            });
     }
 
     function initLoginPage(){
@@ -161,7 +164,7 @@
         if(typeof 'Uplader' !== 'undefined'){
             $('.file').uploader({
                 label : '<i class="material-icons">camera_alt</i><br>Upload a picture of the issue.',
-                accept : '*'
+                accept : 'image/*;capture=camera'
             });
         }
 
@@ -286,6 +289,9 @@
                 slide(0);
                 $('.app-inner').load('views/order-complete.html', function(){
                     $('.order-number').text(data.requestNumber);
+                    if(!USER_TOKEN){
+                        $('.set-up-account').show();
+                    }
                     hideLoader();
                 });
             },1500);

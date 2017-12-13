@@ -237,12 +237,15 @@ textarea.materialize-textarea {
     line-height: 40px;
     text-align: center;
     font-size: 16px;
+    cursor:pointer;
 }
 
 .order-complete img {
     height: 40px;
 }
-
+.order-complete .set-up-account{
+    display: none;
+}
 .login-page,.signup-page, .account-page {
     display: flex;
     flex-direction: column;
