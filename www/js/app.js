@@ -243,7 +243,7 @@
 
 
         preview += '<div class="preview-block"><strong>Date</strong><br/>'+ $('#date').val() +'<br/></div>';
-        preview += '<div class="preview-block"><strong>Time</strong><br/>'+ $('#time').val() +'<br/></div>';
+        preview += '<div class="preview-block"><strong>Time</strong><br/>'+ $('#time option:selected').text() +'<br/></div>';
 
 
         preview += '<div class="preview-block"><strong>Name</strong><br/>'+ $('#name').val() +'<br/></div>';
@@ -275,7 +275,7 @@
         $.post(API_URL + 'requests', JSON.stringify({
             location : $('#address').val(),
             description : $('#description').val(),
-            serviceDate : getEpoch($('#date').val() + ' ' + $('#time').val()),
+            serviceDate : getEpoch($('#date').val().replace(/-/g, '/') + ' ' + $('#time').val()),
             name : $('#name').val(),
             email : $('#email').val(),
             phone : $('#phone').val(),
@@ -301,10 +301,13 @@
         });
     }
 
+    function epochToLocal(epoch){
+        var d = new Date(0);
+        return d.setUTCSeconds(epoch);
+    }
+
     function getEpoch(timestamp){
-        var date = new Date(timestamp),
-            utc = new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate(), 0, 0, 0));
-        return (utc.getTime() / 1000.0);
+        return Math.round(new Date(timestamp).getTime()/1000.0);
     }
 
     function enableNextButton(){
