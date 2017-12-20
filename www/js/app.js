@@ -86,6 +86,10 @@
             .on('click', '.account-save', saveAccount)
             .on('click', '.no-thank-you', function(){
                 $('.set-up-account').hide();
+            }).on('click','.set-up-account', function(){
+                loadLoginPage(function(){
+                    slide($(window).width());
+                });
             });
     }
 
@@ -103,11 +107,14 @@
         }
     }
 
-    function loadLoginPage(){
+    function loadLoginPage(cb){
         showLoader();
         $('.button-collapse').sideNav('hide');
         $('.app').load('views/login.html', function(){
             initLoginPage();
+            if(cb){
+                cb();
+            }
         });
     }
 
