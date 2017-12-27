@@ -74,7 +74,6 @@ main {
     overflow: hidden;
     min-height: 100%;
     display: flex;
-    align-items: center;
     justify-content: center;
 }
 
@@ -87,7 +86,7 @@ main {
     transition: all 700ms;
 }
 
-.app-inner>div {
+.app-inner .app-page {
     min-width: 100%;
     position: relative;
     height: calc(100vh - 56px);
@@ -111,11 +110,11 @@ textarea.materialize-textarea {
 .flow-text {
     font-size: 1.6rem;
     margin: 10px 0;
+    white-space: normal;
 }
 
 .btn, .btn-large {
     box-shadow: none;
-    border-radius: 0;
 }
 
 .ev-uploader {
@@ -133,6 +132,10 @@ textarea.materialize-textarea {
 .ev-uploader-label .material-icons {
     font-size: 34px;
     color: #4dd0e1;
+}
+
+.select-dropdown {
+    max-height: 200px;
 }
 
 .contact-person-checkbox [type="checkbox"]+label {
@@ -180,6 +183,7 @@ textarea.materialize-textarea {
 }
 
 .file-preview {
+    display: block;
     height: 100px;
     margin-bottom: 20px;
     border: 6px solid #fff;
@@ -212,6 +216,7 @@ textarea.materialize-textarea {
     flex-direction: column;
     align-items: center;
     justify-content: space-around;
+    width: 100%;
 }
 
 .order-complete .flow-text {
@@ -238,15 +243,17 @@ textarea.materialize-textarea {
     line-height: 40px;
     text-align: center;
     font-size: 16px;
-    cursor:pointer;
+    cursor: pointer;
 }
 
 .order-complete img {
     height: 40px;
 }
-.order-complete .set-up-account{
+
+.order-complete .set-up-account {
     display: none;
 }
+
 .login-page,.signup-page, .account-page {
     display: flex;
     flex-direction: column;
@@ -289,8 +296,49 @@ textarea.materialize-textarea {
     font-size: 1.2rem;
 }
 
-.info-page p {
+.info-page p, .account-page p {
     margin-top: 0;
+}
+
+.account-requests {
+    margin-top: 10px;
+    max-height: calc(100vh - 56px);
+}
+
+.account-requests .account-request {
+    font-size: 18px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    padding: 10px 0;
+}
+
+.account-requests .account-request i {
+    font-size: 18px;
+}
+
+.account-request-devider {
+    height: 1px;
+}
+
+.account-settings{
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+}
+.signup-success{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    text-align: center;
+    padding:0 30px;
+}
+.signup-success .flow-text.message{
+    line-height: 22px;
+    font-size: 18px;
 }
 
 ::-webkit-input-placeholder {
@@ -345,7 +393,7 @@ textarea.materialize-textarea {
 .loader.loading img {
     -webkit-animation-name: spinLoader;
     -webkit-animation-duration: 1200ms;
-    -webkit-animation-iteration-count: 2;
+    -webkit-animation-iteration-count: 200;
     -webkit-animation-timing-function: linear;
 }
 

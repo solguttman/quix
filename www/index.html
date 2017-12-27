@@ -52,26 +52,26 @@
                         <img src="images/profile.png" alt="">
                     </li>
                 </div>
-                <li class="center" data-page="account"><a href="#" class="white-text">My Account</a></li>
-                <li class="center" data-page="request"><a href="#" class="white-text">Request Service</a></li>
-                <li class="center" data-page="call"><a href="tel:+888-566-7849" class="white-text">Call Support</a></li>
-                <li class="center" data-page="about"><a href="#" class="white-text">About Quix</a></li>
-                <li class="center" data-page="services"><a href="#" class="white-text">Services</a></li>
-                <li class="center" data-page="faq"><a href="#" class="white-text">FAQ</a></li>
-                <li class="center" data-page="contact"><a href="#" class="white-text">Contact Quix</a></li>
+                <li class="center"><a route-to="requests" class="white-text">My Account</a></li>
+                <li class="center"><a route-to="request" class="white-text">Request Service</a></li>
+                <li class="center"><a route-to="call" href="tel:888-566-7849" class="white-text">Call Support</a></li>
+                <li class="center"><a route-to="about"  class="white-text">About Quix</a></li>
+                <li class="center"><a route-to="services" class="white-text">Services</a></li>
+                <li class="center"><a route-to="faq" class="white-text">FAQ</a></li>
+                <li class="center"><a route-to="contact" class="white-text">Contact Quix</a></li>
             </ul>
             <a href="#" data-activates="nav-mobile" class="button-collapse cyan-text text-lighten-2"><i class="material-icons">menu</i></a>
-            <a href="tel:+888-566-7849" class="cyan-text text-lighten-2 right"><i class="material-icons">call</i></a>
+            <a href="tel:888-566-7849" class="cyan-text text-lighten-2 right"><i class="material-icons">call</i></a>
 
         </div>
     </nav>
     <main>
-        <div class="app">
+        <div class="app app-view">
 
         </div>
     </main>
 
-    <div class="loader">
+    <div class="loader loading">
         <img src="images/icon-white.png" alt="">
     </div>
 
@@ -81,10 +81,12 @@
     <script src="https://fs1.cloudsnob.com/static/uploader.js" token="B7S0LLQ7739AS"></script>
     <script type="text/javascript" src="js/materialize.min.js"></script>
     <script type="text/javascript" src="js/index.js"></script>
+    <script type="text/javascript" src="js/router.js"></script>
     <script type="text/javascript" src="js/app.js"></script>
     <script type="text/javascript">
-    app.initialize();
+        app.initialize();
     </script>
+    
 </body>
 
 </html>
