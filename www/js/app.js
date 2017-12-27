@@ -83,7 +83,8 @@
                 $('#' + fileId).uploader({
                     label : '<i class="material-icons">add</i>',
                     accept : 'image/*, application/pdf'
-                }).attr('capture', 'camera');
+                });
+                $('.ev-uploader input').attr('capture', 'camera');
 
             })
             .on('click', '[route-to]', function(){
@@ -164,7 +165,8 @@
                 label : '<i class="material-icons">camera_alt</i><br>Upload a picture of the issue.',
                 //accept : 'image/*;capture=camera'
                 accept : 'image/*, application/pdf'
-            }).attr('capture', 'camera');
+            })
+            $('.ev-uploader input').attr('capture', 'camera');
         }
 
         if (!isApp) {
