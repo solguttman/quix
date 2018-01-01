@@ -41,16 +41,16 @@
         if (this.availableRoutes[this.route]) {
             var id = '#' + this.route + '-template',
                 template = $(id);
-            if (template.length) {
 
-                this.setView(template.html());
+            if (template.length) {
+                this.setView();
                 if (this.availableRoutes[this.route].controller) {
                     this.availableRoutes[this.route].controller();
                 }
 
             } else {
                 this.addRouteToDom(this.availableRoutes[this.route], function(html) {
-                    self.setView(html);
+                    self.setView();
                     if (self.availableRoutes[self.route].controller) {
                         self.availableRoutes[self.route].controller();
                     }
@@ -79,7 +79,10 @@
 
     ROUTER.prototype.setView = function(html) {
 
-        $('.app-view').html(html);
+        var id = '#' + this.route + '-template',
+            template = $(id);
+
+        $('.app-view').html(template.html());
         $('body').attr('view',this.route);
 
     };

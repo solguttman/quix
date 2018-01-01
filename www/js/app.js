@@ -67,6 +67,7 @@
         window.stopLoader = hideLoader;
 
         $('.button-collapse').sideNav();
+        displayLoggedInUser();
 
         $(document)
             .on('file', '.file', function(e, data){
@@ -96,6 +97,8 @@
 
                 $('.password-fileds').fadeToggle('fast');
 
+                return false;
+
             })
             .on('keyup change input', '.app-page input:not(.file), .app-page textarea', enableNextButton)
             .on('click', '[data-slide]', slidePage)
@@ -113,7 +116,7 @@
 
                 setupTime();
 
-            }).on('click', '[data-request]', showRequestDetails);
+            });
 
     }
 
@@ -126,7 +129,7 @@
             $('.login-header').html('Pease Login To Add Request #'+ params.request.requestNumber +' To Your Account');
        
             $('#login_email').val(params.request.email);
-            Router.setParams({});
+            //Router.setParams({});
         }
 
         hideLoader();
@@ -144,7 +147,7 @@
             $('#signup_phone').val(params.request.phone);
 
             $('.signup-header').html('Creat An Account To Add Request #'+ params.request.requestNumber +' To Your Account');
-            Router.setParams({});
+            //Router.setParams({});
         }
 
         hideLoader();
@@ -153,7 +156,15 @@
 
     // init signup success
     function initSignupSuccessPage(){
-        $('.signup-success .title').html('Welcome ' + getUser().name.split(' ')[0]);
+
+    	var params = Router.getParams() || {};
+    	
+    	if(params.request){
+    		$('.signup-success .next').attr('route-to', 'requests').html('View Your Requests');
+    	}
+
+    	$('.signup-success .title').html('Welcome ' + getUser().name.split(' ')[0]);     
+
         hideLoader();
     }
 
@@ -170,9 +181,11 @@
         }
 
         if (!isApp) {
-            $('.datepicker').pickadate({
-                min: true
-            });
+            $('.datepicker')
+                .attr('min', new Date().getFullYear() +'-'+ ("0" + (new Date().getMonth() + 1)).slice(-2) +'-'+ ("0" + new Date().getDate()).slice(-2) )
+                .pickadate({
+                    min: true
+                });
             $('#date_root').appendTo('body');
         }
 
@@ -188,10 +201,9 @@
 
         setupTime();
 
-        $('#address').val(getUser().address);
-        $('#name').val(getUser().name);
-        $('#email').val(getUser().email);
-        $('#phone').val(getUser().phone);
+        $('#name').val(getUser().name).change();
+        $('#email').val(getUser().email).change();
+        $('#phone').val(getUser().phone).change();
 
         hideLoader(); 
 
@@ -200,15 +212,15 @@
     // init order complete page
     function initOrderComplete(){
         var params = Router.getParams();
-        $('.order-number').text(params.request.requestNumber);
+        $('.order-number').html('Your order number is <strong class="text-black">' + params.request.requestNumber + '</strong>');
         if(!getUser().userToken){
 
             if(params.request.userInSystem){
-                $('.set-up-account .white-button').text('Add request to my account').attr('route-to','login');
+                $('.set-up-account .white-button').text('Add #'+params.request.requestNumber+' to your account').attr('route-to','login');
             }else{
-                $('.set-up-account .white-button').attr('route-to','account');
+                $('.set-up-account .white-button').attr('route-to','signup');
             }
-            $('.set-up-account').show();
+            $('.set-up-account .hidden').show();
 
         }
 
@@ -294,14 +306,14 @@
                 $('.request-number').html(request.requestNumber);
 
                 if(request.description){
-                    preview += '<div class="preview-block"><strong>Description</strong><br/>'+ request.description +'</div>';
+                    preview += '<div class="preview-block"><em class="cyan-text text-lighten-2">Description</em><br/>'+ request.description +'</div>';
                 }
 
                 if(request.files.length){
                     preview += '<div class="row file-preview-container">';
                      
                         files = request.files.map(function(file){
-                            return '<div class="col s6"><a href="'+ Uploader.domain + file +'" target="_blank" class="file-preview" style="background-image:url('+ Uploader.domain + file +'/200)"></a></div>';
+                            return '<div class="col s6"><input value="'+ file.replace(/.pdf|.PDF/,'.png') +'" disabled class="file-preview"/></div>';
                         });
 
                         preview += files.join('');
@@ -310,26 +322,29 @@
                 }
 
 
-                preview += '<div class="preview-block"><strong>Address</strong><br/>'+ request.location +'<br/></div>';
+                preview += '<div class="preview-block"><em class="cyan-text text-lighten-2">Address</em><br/>'+ request.location +'<br/></div>';
 
 
-                preview += '<div class="preview-block"><strong>Date</strong><br/>'+ getDateFromTimestamp(request.serviceDate) +'<br/></div>';
-                preview += '<div class="preview-block"><strong>Time</strong><br/>'+ getTimeFromTimestamp(request.serviceDate) +'<br/></div>';
+                preview += '<div class="preview-block"><em class="cyan-text text-lighten-2">Date</em><br/>'+ getDateFromTimestamp(request.serviceDate) +'<br/></div>';
+                preview += '<div class="preview-block"><em class="cyan-text text-lighten-2">Time</em><br/>'+ getTimeFromTimestamp(request.serviceDate) +'<br/></div>';
 
 
-                preview += '<div class="preview-block"><strong>Name</strong><br/>'+ request.name +'<br/></div>';
-                preview += '<div class="preview-block"><strong>Email</strong><br/>'+ request.email +'<br/></div>';
-                preview += '<div class="preview-block"><strong>Phone</strong><br/>'+ request.phone +'<br/></div>';
+                preview += '<div class="preview-block"><em class="cyan-text text-lighten-2">Name</em><br/>'+ request.name +'<br/></div>';
+                preview += '<div class="preview-block"><em class="cyan-text text-lighten-2">Email</em><br/>'+ request.email +'<br/></div>';
+                preview += '<div class="preview-block"><em class="cyan-text text-lighten-2">Phone</em><br/>'+ request.phone +'<br/></div>';
 
                 if(request.name2 || request.phone2){
 
 
-                    preview += '<div class="preview-block"><strong>Contact Name</strong><br/>'+ request.name2 +'<br/></div>';
-                    preview += '<div class="preview-block"><strong>Contact Phone</strong><br/>'+ request.phone2 +'<br/></div>';
+                    preview += '<div class="preview-block"><em class="cyan-text text-lighten-2">Contact Name</em><br/>'+ request.name2 +'<br/></div>';
+                    preview += '<div class="preview-block"><em class="cyan-text text-lighten-2">Contact Phone</em><br/>'+ request.phone2 +'<br/></div>';
 
                 }
 
                 container.html(preview);
+                $('.file-preview').each(function(){
+                	$(this).uploader();
+                });
                 hideLoader();
             }
         });
@@ -383,10 +398,15 @@
                 "22:00" : "10:00 PM",
                 "23:00" : "11:00 PM"
             },
+            today = new Date(),
             date = new Date($('#date').val() || Date.now()),
             selectedTime = $('#time').val();
-        
+
         $('#time').html('');
+
+        if(today.toLocaleDateString() == date.toLocaleDateString()){
+            date = new Date(Date.now());
+        }
 
         for(var h in hours){
             if(parseFloat(h) > date.getHours()){
@@ -408,102 +428,48 @@
             preview = '';
 
         if($('#description').val()){
-            preview += '<div class="preview-block"><strong>Description</strong><br/>'+ $('#description').val() +'</div>';
+            preview += '<div class="preview-block"><em class="cyan-text text-lighten-2">Description</em><br/>'+ $('#description').val() +'</div>';
         }
 
         if($('.file.has-value').length){
             preview += '<div class="row file-preview-container">';
 
                 $('.file.has-value').each(function(){
-                    preview += '<div class="col s6"><div class="file-preview" style="background-image:url('+ Uploader.domain + $(this).val() +')"></div></div>';
+                    preview += '<div class="col s6"><input value="'+ $(this).val().replace(/.pdf|.PDF/,'.png') +'" disabled class="file-preview" /></div>';
                 });
 
             preview += '</div>';
         }
 
 
-        preview += '<div class="preview-block"><strong>Address</strong><br/>'+ $('#address').val() +'<br/></div>';
+        preview += '<div class="preview-block"><em class="cyan-text text-lighten-2">Address</em><br/>'+ $('#address').val() +'<br/></div>';
 
 
-        preview += '<div class="preview-block"><strong>Date</strong><br/>'+ $('#date').val() +'<br/></div>';
-        preview += '<div class="preview-block"><strong>Time</strong><br/>'+ $('#time option:selected').text() +'<br/></div>';
+        preview += '<div class="preview-block"><em class="cyan-text text-lighten-2">Date</em><br/>'+ $('#date').val() +'<br/></div>';
+        preview += '<div class="preview-block"><em class="cyan-text text-lighten-2">Time</em><br/>'+ $('#time option:selected').text() +'<br/></div>';
 
 
-        preview += '<div class="preview-block"><strong>Name</strong><br/>'+ $('#name').val() +'<br/></div>';
-        preview += '<div class="preview-block"><strong>Email</strong><br/>'+ $('#email').val() +'<br/></div>';
-        preview += '<div class="preview-block"><strong>Phone</strong><br/>'+ $('#phone').val() +'<br/></div>';
+        preview += '<div class="preview-block"><em class="cyan-text text-lighten-2">Name</em><br/>'+ $('#name').val() +'<br/></div>';
+        preview += '<div class="preview-block"><em class="cyan-text text-lighten-2">Email</em><br/>'+ $('#email').val() +'<br/></div>';
+        preview += '<div class="preview-block"><em class="cyan-text text-lighten-2">Phone</em><br/>'+ $('#phone').val() +'<br/></div>';
 
         if($('#useContactPerson').is(':checked')){
 
 
-            preview += '<div class="preview-block"><strong>Contact Name</strong><br/>'+ $('#contactName').val() +'<br/></div>';
-            preview += '<div class="preview-block"><strong>Contact Phone</strong><br/>'+ $('#contactPhone').val() +'<br/></div>';
+            preview += '<div class="preview-block"><em class="cyan-text text-lighten-2">Contact Name</em><br/>'+ $('#contactName').val() +'<br/></div>';
+            preview += '<div class="preview-block"><em class="cyan-text text-lighten-2">Contact Phone</em><br/>'+ $('#contactPhone').val() +'<br/></div>';
 
         }
 
         container.html(preview);
 
+        $('.file-preview').each(function(){
+        	$(this).uploader();
+        });
+
         return false;
     }
 
-    //show request details
-    function showRequestDetails(){
-        var requestToken = $(this).data('request');
-        $.ajax({
-            url: API_URL + 'requests/' + requestToken,
-            type: "GET",
-            beforeSend: function(xhr){
-                xhr.setRequestHeader('token', getUser().userToken);
-            },
-            success: function(requests) {
-                var preview = '',
-                    container = $('.request-detail');
-
-                request = JSON.parse(requests)[0];                
-                request.files = JSON.parse(request.files) || [];
-
-                $('.request-number').html(request.requestNumber);
-
-                if(request.description){
-                    preview += '<div class="preview-block"><strong>Description</strong><br/>'+ request.description +'</div>';
-                }
-
-                if(request.files.length){
-                    preview += '<div class="row file-preview-container">';
-
-                        preview += request.files.map(function(file){
-                            return '<div class="col s6"><div class="file-preview" style="background-image:url('+ Uploader.domain + file +')"></div></div>';
-                        });
-
-                    preview += '</div>';
-                }
-
-
-                preview += '<div class="preview-block"><strong>Address</strong><br/>'+ request.location +'<br/></div>';
-
-
-                preview += '<div class="preview-block"><strong>Date</strong><br/>'+ getDateFromTimestamp(request.serviceDate) +'<br/></div>';
-                preview += '<div class="preview-block"><strong>Time</strong><br/>'+ getTimeFromTimestamp(request.serviceDate) +'<br/></div>';
-
-
-                preview += '<div class="preview-block"><strong>Name</strong><br/>'+ request.name +'<br/></div>';
-                preview += '<div class="preview-block"><strong>Email</strong><br/>'+ request.email +'<br/></div>';
-                preview += '<div class="preview-block"><strong>Phone</strong><br/>'+ request.phone +'<br/></div>';
-
-                if(request.name2 || request.phone2){
-
-
-                    preview += '<div class="preview-block"><strong>Contact Name</strong><br/>'+ request.name2 +'<br/></div>';
-                    preview += '<div class="preview-block"><strong>Contact Phone</strong><br/>'+ request.phone2 +'<br/></div>';
-
-                }
-
-                container.html(preview);
-                slide(1);
-                hideLoader();
-            }
-        });
-    }
 
     //enable next button if page is valid
     function enableNextButton(){
@@ -556,7 +522,8 @@
             name2 : $('#contactName').val(),
             phone2 : $('#contactPhone').val(),
             files : files,
-            userToken : getUser().userToken
+            userToken : getUser().userToken,
+            requestedVia : navigator.userAgent.toLowerCase()
         })).done(function(data) {
             data = JSON.parse(data);
 
@@ -597,9 +564,9 @@
                 setUser(data);
 
                 if(Router.getParams().request){
-                    addRequestToAccount('account');
+                    addRequestToAccount('requests');
                 }else{
-                    Router.go('signupSuccess');
+                    Router.go('requests');
                 }
 
             }else{
@@ -691,9 +658,8 @@
         var left = $(this).data('slide');
 
         slide(left);
-
         setTimeout(function(){
-            $('.app-page').scrollTop(0);
+            $('.app-page').scrollTop(0);            
         }, 500);
 
         return false;
@@ -726,7 +692,8 @@
     //save user local
     function setUser(user){
 
-        localStorage.setItem('QUIX_USER', JSON.stringify(user));
+        localStorage.setItem('QUIX_USER', JSON.stringify(user));    
+        displayLoggedInUser();    
 
     }
 
@@ -735,6 +702,11 @@
 
         return JSON.parse(localStorage.getItem('QUIX_USER')) || {};
 
+    }
+
+    //display users email in left nav
+    function displayLoggedInUser(){
+    	$('.user-email').html(getUser().email).toggleClass('hidden', !getUser().email);
     }
 
     // convert GMT date to local date
