@@ -67,7 +67,7 @@
         window.stopLoader = hideLoader;
 
         $('.button-collapse').sideNav();
-        displayLoggedInUser();
+        displayLoggedInUser();        
 
         $(document)
             .on('file', '.file', function(e, data){
@@ -93,13 +93,6 @@
                 $('.button-collapse').sideNav('hide');
 
             })
-            .on('click', '.change-password', function(){
-
-                $('.password-fileds').fadeToggle('fast');
-
-                return false;
-
-            })
             .on('keyup change input', '.app-page input:not(.file), .app-page textarea', enableNextButton)
             .on('click', '[data-slide]', slidePage)
             .on('click', '.review-request', showConfirmRequest)
@@ -112,6 +105,7 @@
             .on('click', '.login', login)
             .on('click', '.signup', signup)
             .on('click', '.account-save', saveAccount)
+            .on('click', '.reset-password', resetPassword)
             .on('change', '#date', function(){
 
                 setupTime();
@@ -180,12 +174,14 @@
             $('.ev-uploader input').attr('capture', 'camera');
         }
 
+        
+            $('.datepicker').attr('min', new Date().getFullYear() +'-'+ ("0" + (new Date().getMonth() + 1)).slice(-2) +'-'+ ("0" + new Date().getDate()).slice(-2) );
+                
+
         if (!isApp) {
-            $('.datepicker')
-                .attr('min', new Date().getFullYear() +'-'+ ("0" + (new Date().getMonth() + 1)).slice(-2) +'-'+ ("0" + new Date().getDate()).slice(-2) )
-                .pickadate({
-                    min: true
-                });
+            $('.datepicker').pickadate({
+                min: true
+            });
             $('#date_root').appendTo('body');
         }
 
@@ -255,10 +251,10 @@
     function initAccountRequests(){
 
         var AVAILABLE_STATUS = {            
-            '0': 'Confirmd',            
+            '0': 'Confirmed',            
             '1': 'In progress',
             '2': 'Completed',            
-            '3': 'Customer un responiseveve',                    
+            '3': 'Customer unresponsive',                    
             '4': 'Archived',
         };
 
@@ -408,11 +404,16 @@
             date = new Date(Date.now());
         }
 
+
         for(var h in hours){
             if(parseFloat(h) > date.getHours()){
                 $('#time').append('<option value="'+ h +'">'+ hours[h] +'</option>');
             }                
         } 
+
+        if(!validateServiceDate()){
+            Materialize.toast('<div class="red-text">Please Choose a Later Date!</div>', 4000);
+        }
 
         if($('#time option[value="'+ selectedTime +'"]').length){
             $('#time').val(selectedTime).change();
@@ -420,6 +421,14 @@
 
         $('#time').material_select();
 
+    }
+
+    function validateServiceDate(){
+        if($('#date').val() && getEpoch($('#date').val().replace(/-/g, '/') + ' ' + $('#time').val()) <= getEpoch(Date.now())){
+            return false;
+        }else{
+            return true;
+        }
     }
 
     // show request before sending to server 
@@ -485,6 +494,8 @@
                 isValid = false;
             }else if( $(this).attr('type') === 'email' && !emailRegex.test($(this).val()) ){
                 isValid = false;
+            }else if( $(this).attr('type') === 'date'){
+                isValid = validateServiceDate();
             }
 
         });
@@ -493,7 +504,7 @@
             next.removeClass('disabled');
         }else{
             next.addClass('disabled');
-        }
+        }        
 
     }
 
@@ -628,28 +639,50 @@
             phone : $('#account_phone').val()
         };
 
-        if($('.password-fileds').is(':visible')){
-            if($('#account_password').val() !== $('#account_password2').val()){
-                return $('.account-error-message').text('Password not a match');
-            }else{
-                account.password = $('#account_password').val();
-            }
-        }
-
         showLoader();
         $.post(API_URL + 'users/' + userToken, JSON.stringify(account)).done(function(data) {
             hideLoader();
             data = JSON.parse(data);
             if(data.error){
-                $('.signup-error-message').text(data.error);
+                $('.account-page .signup-error-message, .account-page .account-error-message').text(data.error);
             }else{
-                $('.account-success-message').text('Account Updated!');
+                $('.account-page .account-success-message').text('Account Updated!');
                 setUser(data);
             }
         }).fail(function(data) {
             hideLoader();
             Materialize.toast('<div class="red-text">Error!</div>', 4000);
         });
+    }
+
+    //reset password
+    function resetPassword(){
+
+        if($('#account_password_new').val() !== $('#account_password2_new').val()){
+            return $('.account-error-message').text('Password not a match');
+        }
+
+        showLoader();
+        $.post(API_URL + 'password', JSON.stringify({
+          "userToken" : getUser().userToken,
+          "origPassword" : $('#account_password').val(),
+          "password" : $('#account_password_new').val(),
+          "password2" : $('#account_password2_new').val()
+        })).done(function(data) {
+            hideLoader();
+            data = JSON.parse(data);
+            if(data.error){
+                $('.reset-password-page .account-error-message').text(data.error);
+            }else{
+                slide(0);
+                $('.account-page .account-success-message').text('Password Updated!');
+                
+            }
+        }).fail(function(data) {
+            hideLoader();
+            Materialize.toast('<div class="red-text">Error!</div>', 4000);
+        });
+
     }
 
     // slide to new page and scroll up

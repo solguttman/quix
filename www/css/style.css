@@ -35,11 +35,15 @@ nav .button-collapse {
 }
 
 main {
-    height: calc(100vh - 56px);
-    overflow: auto;
+    /* height: calc(100vh - 56px); */
+    /* overflow: auto; */
     display: flex;
     align-items: flex-start;
     justify-content: center;
+}
+
+.navbar-fixed {
+    z-index: 999;
 }
 
 .side-nav {
@@ -64,9 +68,10 @@ main {
 .side-nav .logo .user-email {
     font-size: 1.2rem;
     line-height: 1.2rem;
-    margin-top: 20px;   
+    margin-top: 20px;
 }
-.side-nav .logo .user-email.hidden{
+
+.side-nav .logo .user-email.hidden {
     display: none;
 }
 
@@ -92,17 +97,18 @@ main {
 .app-inner {
     width: 100%;
     display: flex;
-    white-space: nowrap;
+    /*white-space: nowrap;*/
     position: relative;
-    transform: translateX(0px);
+    /* transform: translateX(0px); */
     transition: all 700ms;
 }
 
 .app-inner .app-page {
-    min-width: 100%;
+    min-width: 100vw;
     position: relative;
     height: calc(100vh - 56px);
-    overflow: auto;
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 
 .input-field label {
@@ -233,6 +239,7 @@ textarea.materialize-textarea {
     align-items: center;
     justify-content: space-around;
     width: 100%;
+    height: calc(100vh - 56px);
 }
 
 .order-complete .flow-text {
@@ -279,7 +286,7 @@ textarea.materialize-textarea {
     justify-content: space-between;
 }
 
-.login-page input, .signup-page input[type=password], .account-page input[type=password] {
+.login-page input, .signup-page input[type=password] {
     border: 1px solid #4dd0e1 !important;
     text-align: center;
     width: 80% !important;
@@ -298,8 +305,8 @@ textarea.materialize-textarea {
 }
 
 .info-page {
-    height: calc(100vh - 56px);
-    overflow: auto;
+    /* height: calc(100vh - 56px); */
+    /* overflow: auto; */
     width: 100%;
 }
 
@@ -344,7 +351,7 @@ textarea.materialize-textarea {
     position: fixed;
     bottom: 20px;
     right: 20px;
-}
+    */ }
 
 .signup-success {
     height: 100%;
