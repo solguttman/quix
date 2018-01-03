@@ -69,13 +69,13 @@
     },
     "onesignal-cordova-plugin": {
       "PACKAGE_NAME": "com.evelt.quix"
+    },
+    "cordova-plugin-file": {
+      "PACKAGE_NAME": "com.evelt.quix"
     }
   },
   "dependent_plugins": {
     "cordova-plugin-compat": {
-      "PACKAGE_NAME": "com.evelt.quix"
-    },
-    "cordova-plugin-file": {
       "PACKAGE_NAME": "com.evelt.quix"
     }
   }

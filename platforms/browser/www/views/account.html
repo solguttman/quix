@@ -1,5 +1,4 @@
 <div class="app-inner">
-
     <div class="app-page">
         <div class="account-page">
             <div class="row">
@@ -16,13 +15,13 @@
 
                 <div class="col s12">
                     <div class="col s12">
-                        <div class="account-error-message error-message red-text text-accent-4"></div>
+                        <div class="account-error-message error-message red-text text-accent-4 center"></div>
                     </div>
                 </div>
 
                 <div class="col s12">
                     <div class="col s12">
-                        <div class="account-success-message center green-text text-accent-4"></div>
+                        <div class="account-success-message center green-text text-accent-4 center"></div>
                     </div>
                 </div>
 
@@ -30,11 +29,6 @@
                     <div class="row">
                         <div class="input-field col s12">
                             <input id="account_name" name="name" type="text" placeholder="Name" class="validate required">
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="input-field col s12">
-                            <input id="account_address" name="address" type="text" placeholder="Address" class="validate required">
                         </div>
                     </div>
                     <div class="row">
@@ -49,24 +43,13 @@
                     </div>
                     <div class="row">
                         <div class="col s12 center">
-                            <a href="#" class="cyan-text text-lighten-2 change-password">Change Password</a>
+                            <a href="#" class="cyan-text text-lighten-2" data-slide="1">Change Password</a>
                         </div>
                     </div>
-                    <div class="password-fileds" style="display: none;">
-                        <div class="row">
-                            <div class="center col s12">
-                                <input id="account_password" name="password" type="password" placeholder="Password" class="validate required">
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="center col s12">
-                                <input id="account_password2" name="password2" type="password" placeholder="Confirm Password" class="validate required">
-                            </div>
-                        </div>
-                    </div>
+                    
                     <div class="row navigation">
                         <div class="input-field col s12">
-                            <a class="col s12 waves-effect waves-light btn cyan lighten-2 account-save">&nbsp;&nbsp;&nbsp;Save&nbsp;&nbsp;&nbsp;</a>
+                            <a class="col s12 waves-effect waves-light btn cyan lighten-2 account-save">Save</a>
                         </div>
                     </div>
                 </div>
@@ -74,4 +57,75 @@
         </div>
     </div>
 
+    <div class="app-page">
+        <div class="reset-password-page">
+            <div class="row">
+
+                <div class="col-s12">
+                    <br>
+                </div>
+
+                <div class="col s12">
+                    <div class="col s12">
+                        <div class="flow-text">Reset Password</div>
+                    </div>
+                </div>
+
+                <div class="col s12">
+                    <div class="center col s12">
+                        Password must contain <br> 8 charachters 1 uppercase 1 number
+                    </div>
+                    <br>
+                </div>
+
+                <div class="col s12">
+                    <div class="col s12">
+                        <div class="account-error-message error-message red-text text-accent-4"></div>
+                    </div>
+                </div>
+
+                <div class="col s12">
+                    <div class="col s12">
+                        <div class="account-success-message center green-text text-accent-4"></div>
+                    </div>
+                </div>
+
+                <div class="col s12">
+
+                    
+                    <div class="password-fileds">
+                        <div class="row">
+                            <div class="center col s12">
+                                <input id="account_password" name="password" type="password" placeholder="Current Password" class="validate required">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="center col s12">
+                                <input id="account_password_new" name="password" type="password" placeholder="New Password" class="validate required">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="center col s12">
+                                <input id="account_password2_new" name="password2" type="password" placeholder="Confirm New Password" class="validate required">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col s12 center">
+                            <a href="#" class="cyan-text text-lighten-2" data-slide="0">Cancel</a>
+                        </div>
+                    </div>
+
+                    <div class="row navigation">
+                        <div class="input-field col s12">
+                            <a class="col s12 waves-effect waves-light btn cyan lighten-2 reset-password">Reset</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+        
 </div>
+<a class="btn-floating btn-large waves-effect waves-light cyan lighten-2 account-settings" route-to="requests"><i class="material-icons">person</i></a>

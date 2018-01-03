@@ -26,6 +26,13 @@
     <meta name="format-detection" content="telephone=no" />
     <meta name="msapplication-tap-highlight" content="no" />
     <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
+    
+    <!-- Chrome, Firefox OS and Opera -->
+    <meta name="theme-color" content="#543493">
+    <!-- Windows Phone -->
+    <meta name="msapplication-navbutton-color" content="#543493">
+    <!-- iOS Safari -->
+    <meta name="apple-mobile-web-app-status-bar-style" content="#543493">
     <!-- This is a wide open CSP declaration. To lock this down for production, see below. -->
     <!-- <meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline'; style-src 'self' 'unsafe-inline'; media-src *" /> -->
     <!-- Good default declaration:
@@ -43,37 +50,42 @@
 </head>
 
 <body>
-    <nav class="white" role="navigation">
-        <div class="nav-wrapper container">
+    <div class="navbar-fixed">
+        <nav class="white" role="navigation">
+            <div class="nav-wrapper container">
 
-            <ul id="nav-mobile" class="side-nav cyan lighten-2">
-                <div>
-                    <li class="logo center">
-                        <img src="images/profile.png" alt="">
-                    </li>
-                </div>
-                <li class="center" data-page="account"><a href="#" class="white-text">My Account</a></li>
-                <li class="center" data-page="request"><a href="#" class="white-text">Request Service</a></li>
-                <li class="center" data-page="call"><a href="#" class="white-text">Call Support</a></li>
-                <li class="center" data-page="about"><a href="#" class="white-text">About Quix</a></li>
-                <li class="center" data-page="services"><a href="#" class="white-text">Services</a></li>
-                <li class="center" data-page="faq"><a href="#" class="white-text">FAQ</a></li>
-                <li class="center" data-page="services"><a href="#" class="white-text">Contact Quix</a></li>
-            </ul>
-            <a href="#" data-activates="nav-mobile" class="button-collapse cyan-text text-lighten-2"><i class="material-icons">menu</i></a>
-            <a href="tel:+1845-459-5754" class="cyan-text text-lighten-2 right"><i class="material-icons">call</i></a>
+                <ul id="nav-mobile" class="side-nav cyan lighten-2">
+                    <div>
+                        <li class="logo center" route-to="requests">
+                            <img src="images/profile.png" alt="">
+                            <div class="user-email hidden"></div>
+                        </li>
+                    </div>
+                    <li class="center"><a route-to="requests" class="white-text">My Account</a></li>
+                    <li class="center"><a route-to="request" class="white-text">Request Service</a></li>
+                    <li class="center"><a route-to="call" href="tel:888-566-7849" class="white-text">Call Support</a></li>
+                    <li class="center"><a route-to="about"  class="white-text">About Quix</a></li>
+                    <li class="center"><a route-to="services" class="white-text">Services</a></li>
+                    <li class="center"><a route-to="faq" class="white-text">FAQ</a></li>
+                    <li class="center"><a route-to="contact" class="white-text">Contact Quix</a></li>
+                </ul>
+                <a href="#" data-activates="nav-mobile" class="button-collapse cyan-text text-lighten-2"><i class="material-icons">menu</i></a>
+                <a href="tel:888-566-7849" class="cyan-text text-lighten-2 right"><i class="material-icons">call</i></a>
 
-        </div>
-    </nav>
+            </div>
+        </nav>
+    </div>
     <main>
-        <div class="app">
+        <div class="app app-view">
 
         </div>
     </main>
 
-    <div class="loader">
+    <div class="loader loading">
         <img src="images/icon-white.png" alt="">
     </div>
+
+    <!-- <a class="btn-floating btn-large waves-effect waves-light cyan lighten-2 account-settings" route-to="requests"><i class="material-icons">person</i></a> -->
 
     <!--Import jQuery before materialize.js-->
     <script type="text/javascript" src="cordova.js"></script>
@@ -81,10 +93,12 @@
     <script src="https://fs1.cloudsnob.com/static/uploader.js" token="B7S0LLQ7739AS"></script>
     <script type="text/javascript" src="js/materialize.min.js"></script>
     <script type="text/javascript" src="js/index.js"></script>
+    <script type="text/javascript" src="js/router.js"></script>
     <script type="text/javascript" src="js/app.js"></script>
     <script type="text/javascript">
-    app.initialize();
+        app.initialize();
     </script>
+    
 </body>
 
 </html>

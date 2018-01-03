@@ -35,11 +35,15 @@ nav .button-collapse {
 }
 
 main {
-    height: calc(100vh - 56px);
-    overflow: auto;
+    /* height: calc(100vh - 56px); */
+    /* overflow: auto; */
     display: flex;
     align-items: flex-start;
     justify-content: center;
+}
+
+.navbar-fixed {
+    z-index: 999;
 }
 
 .side-nav {
@@ -48,14 +52,27 @@ main {
 }
 
 .side-nav .logo {
-    padding: 40px 0 30px 0;
+    padding: 30px 0 30px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.6);
+    margin-bottom: 20px;
+    font-size: 1.2rem;
 }
 
 .side-nav .logo img {
     margin: auto;
     display: block;
     max-width: 100%;
-    width: 150px;
+    width: 100px;
+}
+
+.side-nav .logo .user-email {
+    font-size: 1.2rem;
+    line-height: 1.2rem;
+    margin-top: 20px;
+}
+
+.side-nav .logo .user-email.hidden {
+    display: none;
 }
 
 .side-nav li>a {
@@ -74,24 +91,24 @@ main {
     overflow: hidden;
     min-height: 100%;
     display: flex;
-    align-items: center;
     justify-content: center;
 }
 
 .app-inner {
     width: 100%;
     display: flex;
-    white-space: nowrap;
+    /*white-space: nowrap;*/
     position: relative;
-    transform: translateX(0px);
+    /* transform: translateX(0px); */
     transition: all 700ms;
 }
 
-.app-inner>div {
-    min-width: 100%;
+.app-inner .app-page {
+    min-width: 100vw;
     position: relative;
     height: calc(100vh - 56px);
-    overflow: auto;
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 
 .input-field label {
@@ -104,7 +121,6 @@ input:not(.browser-default), textarea:not(.browser-default) {
     box-shadow: none !important;
 }
 
-
 textarea.materialize-textarea {
     padding: .75rem 0;
 }
@@ -112,11 +128,11 @@ textarea.materialize-textarea {
 .flow-text {
     font-size: 1.6rem;
     margin: 10px 0;
+    white-space: normal;
 }
 
 .btn, .btn-large {
     box-shadow: none;
-    border-radius: 0;
 }
 
 .ev-uploader {
@@ -134,6 +150,15 @@ textarea.materialize-textarea {
 .ev-uploader-label .material-icons {
     font-size: 34px;
     color: #4dd0e1;
+}
+
+.ev-uploader-filename {
+    white-space: normal;
+    font-size: 0.8rem;
+}
+
+.select-dropdown {
+    max-height: 200px;
 }
 
 .contact-person-checkbox [type="checkbox"]+label {
@@ -181,6 +206,7 @@ textarea.materialize-textarea {
 }
 
 .file-preview {
+    display: block;
     height: 100px;
     margin-bottom: 20px;
     border: 6px solid #fff;
@@ -198,10 +224,10 @@ textarea.materialize-textarea {
     padding-bottom: 10px;
     font-size: 1.2rem;
     font-weight: 300;
+    white-space: normal;
 }
 
-.preview-block strong {
-    font-weight: 400;
+.preview-block em {
 }
 
 .order-complete {
@@ -212,6 +238,8 @@ textarea.materialize-textarea {
     flex-direction: column;
     align-items: center;
     justify-content: space-around;
+    width: 100%;
+    height: calc(100vh - 56px);
 }
 
 .order-complete .flow-text {
@@ -224,12 +252,12 @@ textarea.materialize-textarea {
 }
 
 .order-complete .order-number {
-    width: 80%;
     font-size: 24px;
-    background-color: #fff;
-    height: 50px;
-    line-height: 50px;
     text-align: center;
+}
+
+.order-complete .order-number strong {
+    font-weight: 600;
 }
 
 .order-complete .white-button {
@@ -238,34 +266,108 @@ textarea.materialize-textarea {
     line-height: 40px;
     text-align: center;
     font-size: 16px;
+    cursor: pointer;
+    display: inline-block;
+    padding: 0 30px;
 }
 
 .order-complete img {
     height: 40px;
 }
-.login-page,.signup-page, .account-page{
+
+.order-complete .set-up-account .hidden {
+    display: none;
+}
+
+.login-page,.signup-page, .account-page {
     display: flex;
     flex-direction: column;
     height: 100%;
     justify-content: space-between;
 }
-.login-page input,
-.signup-page input[type=password],
-.account-page input[type=password]{
+
+.login-page input, .signup-page input[type=password] {
     border: 1px solid #4dd0e1 !important;
     text-align: center;
     width: 80% !important;
     margin-bottom: 0 !important;
 }
-.login-page input{
+
+.login-page input {
     width: 100% !important;
 }
-.error-message{
+
+.error-message {
     width: 70vw;
     white-space: normal;
     margin: auto;
     line-height: initial;
 }
+
+.info-page {
+    /* height: calc(100vh - 56px); */
+    /* overflow: auto; */
+    width: 100%;
+}
+
+.info-page .flow-text.title {
+    font-size: 2rem;
+    padding-bottom: 20px;
+}
+
+.info-page .flow-text {
+    line-height: initial;
+    margin: 20px 0 0 0;
+    font-size: 1.2rem;
+}
+
+.info-page p, .account-page p {
+    margin-top: 0;
+}
+
+.account-requests {
+    margin-top: 10px;
+    max-height: calc(100vh - 56px);
+}
+
+.account-requests .account-request {
+    font-size: 18px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    padding: 10px 0;
+}
+
+.account-requests .account-request i {
+    font-size: 18px;
+}
+
+.account-request-devider {
+    height: 1px;
+}
+
+.account-settings {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    */ }
+
+.signup-success {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    text-align: center;
+    padding: 0 30px;
+}
+
+.signup-success .flow-text.message {
+    line-height: 22px;
+    font-size: 18px;
+}
+
 ::-webkit-input-placeholder {
     /* Chrome/Opera/Safari */
     font-size: 1.2rem;
@@ -305,53 +407,42 @@ textarea.materialize-textarea {
     top: 0;
     left: 0;
 }
-.init_loading{
+
+.init_loading {
     background-image: none;
 }
+
 .loader img {
     width: 100px;
-    transition-timing-function: ease;
-}
-
-.loader.loading img {
     -webkit-animation-name: spinLoader;
     -webkit-animation-duration: 1200ms;
-    -webkit-animation-iteration-count: 2;
+    -webkit-animation-iteration-count: 1;
     -webkit-animation-timing-function: linear;
 }
 
-@-webkit-keyframes spinLoader {
-    from {
-        -webkit-transform: rotate(0deg);
-    }
+.loader.loading img {
+    -webkit-animation-iteration-count: infinite;
+}
 
+@-webkit-keyframes spinLoader {
     to {
         -webkit-transform: rotate(360deg);
     }
 }
-@-moz-keyframes spinLoader {
-    from {
-        -moz-transform: rotate(0deg);
-    }
 
+@-moz-keyframes spinLoader {
     to {
         -moz-transform: rotate(360deg);
     }
 }
-@-o-keyframes spinLoader {
-    from {
-        -o-transform: rotate(0deg);
-    }
 
+@-o-keyframes spinLoader {
     to {
         -o-transform: rotate(360deg);
     }
 }
-@keyframes spinLoader {
-    from {
-        transform: rotate(0deg);
-    }
 
+@keyframes spinLoader {
     to {
         transform: rotate(360deg);
     }

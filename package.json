@@ -9,12 +9,14 @@
     "plugins": {
       "cordova-plugin-splashscreen": {},
       "cordova-plugin-whitelist": {},
-      "onesignal-cordova-plugin": {}
+      "onesignal-cordova-plugin": {},
+      "cordova-plugin-file": {}
     }
   },
   "dependencies": {
     "cordova-browser": "~5.0.1",
     "cordova-plugin-whitelist": "~1.2.1",
-    "onesignal-cordova-plugin": "^2.2.4"
+    "onesignal-cordova-plugin": "^2.2.4",
+    "cordova-plugin-file": "~4.3.3"
   }
 }
