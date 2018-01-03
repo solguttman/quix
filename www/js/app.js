@@ -83,7 +83,7 @@
                 $('.files').append('<div class="col s12"><input class="file" id="'+ fileId +'" name="'+ fileId +'" type="text"></div>');
                 $('#' + fileId).uploader({
                     label : '<i class="material-icons">add</i>',
-                    accept : 'image/*, application/pdf'
+                    accept : 'image/*'
                 });
                 $('.ev-uploader input').attr('capture', 'camera');
 
@@ -169,7 +169,7 @@
             $('.file').uploader({
                 label : '<i class="material-icons">camera_alt</i><br>Upload a picture of the issue.',
                 //accept : 'image/*;capture=camera'
-                accept : 'image/*, application/pdf'
+                accept : 'image/*'
             })
             $('.ev-uploader input').attr('capture', 'camera');
         }

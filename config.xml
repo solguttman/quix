@@ -11,14 +11,11 @@
     <config-file parent="/manifest" platform="android">
         <application android:theme="@android:style/Theme.Light.NoTitleBar" />
     </config-file>
-  
+    <preference name="phonegap-version" value="cli-7.0.1" />
     <preference name="AutoHideSplashScreen" value="false" />
     <preference name="SplashScreenDelay" value="10000" />
     <preference name="ShowSplashScreenSpinner" value="false" />
     <preference name="SplashMaintainAspectRatio" value="true" />
-
-  
-
     <icon src="icon.png" />
     <splash src="splash.png" />
     <platform name="android">
@@ -82,8 +79,10 @@
     <plugin name="cordova-plugin-splashscreen" />
     <plugin name="cordova-plugin-whitelist" spec="~1.2.1" />
     <plugin name="onesignal-cordova-plugin" spec="^2.2.4" />
-
-    <plugin name="cordova-plugin-camera"></plugin>
+    <plugin name="cordova-plugin-camera">
+        <variable name="CAMERA_USAGE_DESCRIPTION" value="App would like to access the camera." />
+        <variable name="PHOTOLIBRARY_USAGE_DESCRIPTION" value="App would like to access the library." />
+    </plugin>
     <plugin name="cordova-plugin-media-capture"/>
     <plugin name="cordova-plugin-media"/>
     <plugin name="cordova-plugin-device"/>
