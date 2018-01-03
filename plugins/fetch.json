@@ -10,7 +10,7 @@
   "cordova-plugin-camera": {
     "source": {
       "type": "registry",
-      "id": "cordova-plugin-camera@~2.1.1"
+      "id": "cordova-plugin-camera@4.0.1"
     },
     "is_top_level": true,
     "variables": {}
@@ -18,7 +18,7 @@
   "cordova-plugin-media-capture": {
     "source": {
       "type": "registry",
-      "id": "cordova-plugin-media-capture@~1.2.0"
+      "id": "cordova-plugin-media-capture@3.0.1"
     },
     "is_top_level": true,
     "variables": {}
@@ -122,7 +122,7 @@
   "cordova-plugin-media": {
     "source": {
       "type": "registry",
-      "id": "cordova-plugin-media@~2.2.0"
+      "id": "cordova-plugin-media@5.0.1"
     },
     "is_top_level": true,
     "variables": {}

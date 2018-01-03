@@ -10,7 +10,13 @@
       "cordova-plugin-splashscreen": {},
       "cordova-plugin-whitelist": {},
       "onesignal-cordova-plugin": {},
-      "cordova-plugin-file": {}
+      "cordova-plugin-file": {},
+      "cordova-plugin-media": {},
+      "cordova-plugin-media-capture": {},
+      "cordova-plugin-camera": {
+        "CAMERA_USAGE_DESCRIPTION": "App would like to access the camera.",
+        "PHOTOLIBRARY_USAGE_DESCRIPTION": "App would like to access the library."
+      }
     }
   },
   "dependencies": {
