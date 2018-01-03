@@ -11,15 +11,15 @@
     <config-file parent="/manifest" platform="android">
         <application android:theme="@android:style/Theme.Light.NoTitleBar" />
     </config-file>
-    <preference name="phonegap-version" value="cli-7.0.1" />
+    <!-- <preference name="phonegap-version" value="cli-7.0.1" /> -->
     <preference name="AutoHideSplashScreen" value="false" />
     <preference name="SplashScreenDelay" value="10000" />
     <preference name="ShowSplashScreenSpinner" value="false" />
     <preference name="SplashMaintainAspectRatio" value="true" />
 
-    <platform name="android">
+    <!-- <platform name="android">
             <preference name="android-targetSdkVersion" value="22"/>
-    </platform>
+    </platform> -->
 
     <icon src="icon.png" />
     <splash src="splash.png" />
@@ -88,6 +88,5 @@
     <plugin name="cordova-plugin-camera"></plugin>
     <plugin name="cordova-plugin-media-capture"/>
     <plugin name="cordova-plugin-media"/>
-    <plugin name="cordova-plugin-file"/>
     <plugin name="cordova-plugin-device"/>
 </widget>
