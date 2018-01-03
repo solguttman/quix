@@ -79,6 +79,7 @@
     <plugin name="cordova-plugin-splashscreen" />
     <plugin name="cordova-plugin-whitelist" spec="~1.2.1" />
     <plugin name="onesignal-cordova-plugin" spec="^2.2.4" />
+    
     <plugin name="cordova-plugin-camera"></plugin>
     <plugin name="cordova-plugin-media-capture"/>
     <plugin name="cordova-plugin-media"/>
