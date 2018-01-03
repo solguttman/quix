@@ -33,33 +33,14 @@
     <meta name="msapplication-navbutton-color" content="#543493">
     <!-- iOS Safari -->
     <meta name="apple-mobile-web-app-status-bar-style" content="#543493">
-    <!-- This is a wide open CSP declaration. To lock this down for production, see below. -->
-    <!-- <meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline'; style-src 'self' 'unsafe-inline'; media-src *" /> -->
-    <!-- Good default declaration:
-    * gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
-    * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
-    * Disables use of eval() and inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
-        * Enable inline JS: add 'unsafe-inline' to default-src
-        * Enable eval(): add 'unsafe-eval' to default-src
-    * Create your own at http://cspisawesome.com
-    -->
-    <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: 'unsafe-inline' https://ssl.gstatic.com; style-src 'self' 'unsafe-inline'; media-src *" /> -->
-   <!--  <link rel="stylesheet" href="https://cdn.evelthost.com/fonts/volte/stylesheet.css">
+
+    <link rel="stylesheet" href="https://cdn.evelthost.com/fonts/volte/stylesheet.css">
     <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection" />
-    <link type="text/css" rel="stylesheet" href="css/style.css" media="screen,projection" /> -->
-    <style type='text/css'>
-    body, html, iframe {
-                 margin: 0;
-                 padding: 0;
-                 border: 0px none;
-                 width: 100%;
-                 height: 100%;
-    }
-  </style>
+    <link type="text/css" rel="stylesheet" href="https://www.quixservice.com/app/css/style.css" media="screen,projection" />
 </head>
 
 <body>
-    <!-- <div class="navbar-fixed">
+    <div class="navbar-fixed">
         <nav class="white" role="navigation">
             <div class="nav-wrapper container">
 
@@ -92,23 +73,21 @@
 
     <div class="loader loading">
         <img src="images/icon-white.png" alt="">
-    </div> -->
+    </div>
 
     <!-- <a class="btn-floating btn-large waves-effect waves-light cyan lighten-2 account-settings" route-to="requests"><i class="material-icons">person</i></a> -->
 
     <!--Import jQuery before materialize.js-->
     <script type="text/javascript" src="cordova.js"></script>
     <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
-    <!-- <script src="https://fs1.cloudsnob.com/static/uploader.js" token="B7S0LLQ7739AS"></script> -->
+    <script src="https://fs1.cloudsnob.com/static/uploader.js" token="B7S0LLQ7739AS"></script>
     <script type="text/javascript" src="js/materialize.min.js"></script>
-    <script type="text/javascript" src="js/index.js"></script>
-    <!-- 
-    <script type="text/javascript" src="js/router.js"></script>
-    <script type="text/javascript" src="js/app.js"></script> -->
+    <script type="text/javascript" src="https://www.quixservice.com/app/js/index.js"></script>
+    <script type="text/javascript" src="https://www.quixservice.com/app/js/router.js"></script>
+    <script type="text/javascript" src="https://www.quixservice.com/app/js/app.js"></script>
     <script type="text/javascript">
         app.initialize();
     </script>
-    <iframe src="https://www.quixservice.com/app" frameborder="0"></iframe>
     
 </body>
 
