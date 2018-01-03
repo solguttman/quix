@@ -79,10 +79,7 @@
     <plugin name="cordova-plugin-splashscreen" />
     <plugin name="cordova-plugin-whitelist" spec="~1.2.1" />
     <plugin name="onesignal-cordova-plugin" spec="^2.2.4" />
-    <plugin name="cordova-plugin-camera">
-        <variable name="CAMERA_USAGE_DESCRIPTION" value="App would like to access the camera." />
-        <variable name="PHOTOLIBRARY_USAGE_DESCRIPTION" value="App would like to access the library." />
-    </plugin>
+    <plugin name="cordova-plugin-camera"></plugin>
     <plugin name="cordova-plugin-media-capture"/>
     <plugin name="cordova-plugin-media"/>
     <plugin name="cordova-plugin-file"/>
