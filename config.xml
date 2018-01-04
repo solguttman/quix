@@ -79,6 +79,7 @@
     <plugin name="cordova-plugin-splashscreen" />
     <plugin name="cordova-plugin-whitelist" spec="~1.2.1" />
     <plugin name="onesignal-cordova-plugin" spec="^2.2.4" />
+
     <plugin name="cordova-plugin-file" spec="~4.3.3" />
     <plugin name="cordova-plugin-media" spec="~2.2.0" />
     <plugin name="cordova-plugin-media-capture" spec="~1.2.0" />
@@ -86,4 +87,13 @@
         <variable name="CAMERA_USAGE_DESCRIPTION" value="App would like to access the camera." />
         <variable name="PHOTOLIBRARY_USAGE_DESCRIPTION" value="App would like to access the library." />
     </plugin>
+
+    <config-file platform="ios" parent="NSCameraUsageDescription" overwrite="true">
+       <string>App would like to access the camera.</string>
+    </config-file>
+
+    <config-file platform="ios" parent="NSPhotoLibraryUsageDescription" overwrite="true">
+       <string>App would like to access the library.</string>
+    </config-file>    
+
 </widget>

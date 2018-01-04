@@ -254,7 +254,7 @@
             '0': 'Confirmed',            
             '1': 'In progress',
             '2': 'Completed',            
-            '3': 'Customer unresponsive',                    
+            '3': 'Unresponsive',                    
             '4': 'Archived',
         };
 
