@@ -163,7 +163,22 @@
     }
 
     // init request route
-    function initRequstPage(){               
+    function initRequstPage(){  
+
+        var startDate =  new Date(),
+            minDate;
+
+        if(startDate.getDay() === 5 && startDate.getHours() >= 11){
+            startDate = new Date( startDate.setDate(startDate.getDate() + 2) );
+        }else if(startDate.getDay() === 6){
+            startDate = new Date( startDate.setDate(startDate.getDate() + 1) );
+        }else if(startDate.getHours() >= 18){
+            startDate = new Date( startDate.setDate(startDate.getDate() + 1) );
+        }        
+
+        minDate = startDate.getFullYear() +'-'+ ("0" + (startDate.getMonth() + 1)).slice(-2) +'-'+ ("0" + startDate.getDate()).slice(-2);
+
+        $('.datepicker').val(minDate).attr('min',  minDate);
 
         if(typeof Uploader !== 'undefined'){
             $('.file').uploader({
@@ -173,14 +188,10 @@
             })
             $('.ev-uploader input').attr('capture', 'camera');
         }
-
-        
-            $('.datepicker').attr('min', new Date().getFullYear() +'-'+ ("0" + (new Date().getMonth() + 1)).slice(-2) +'-'+ ("0" + new Date().getDate()).slice(-2) );
                 
-
         if (!isApp) {
             $('.datepicker').pickadate({
-                min: true
+                min: 1
             });
             $('#date_root').appendTo('body');
         }
@@ -369,14 +380,14 @@
     function setupTime(){
 
         var hours = {
-                "00:00" : "12:00 AM",
-                "01:00" : "01:00 AM",
-                "02:00" : "02:00 AM",
-                "03:00" : "03:00 AM",
-                "04:00" : "04:00 AM",
-                "05:00" : "05:00 AM",
-                "06:00" : "06:00 AM",
-                "07:00" : "07:00 AM",
+                // "00:00" : "12:00 AM",
+                // "01:00" : "01:00 AM",
+                // "02:00" : "02:00 AM",
+                // "03:00" : "03:00 AM",
+                // "04:00" : "04:00 AM",
+                // "05:00" : "05:00 AM",
+                // "06:00" : "06:00 AM",
+                // "07:00" : "07:00 AM",
                 "08:00" : "08:00 AM",
                 "09:00" : "09:00 AM",
                 "10:00" : "10:00 AM",
@@ -388,27 +399,49 @@
                 "16:00" : "04:00 PM",
                 "17:00" : "05:00 PM",
                 "18:00" : "06:00 PM",
-                "19:00" : "07:00 PM",
-                "20:00" : "08:00 PM",
-                "21:00" : "09:00 PM",
-                "22:00" : "10:00 PM",
-                "23:00" : "11:00 PM"
+                // "19:00" : "07:00 PM",
+                // "20:00" : "08:00 PM",
+                // "21:00" : "09:00 PM",
+                // "22:00" : "10:00 PM",
+                // "23:00" : "11:00 PM"
             },
             today = new Date(),
-            date = new Date($('#date').val() || Date.now()),
             selectedTime = $('#time').val();
 
-        $('#time').html('');
+        var startDate =  new Date($('#date').val() || Date.now()),
+            minDate;
 
-        if(today.toLocaleDateString() == date.toLocaleDateString()){
-            date = new Date(Date.now());
-        }
+        if(startDate.getDay() === 5 && startDate.getHours() >= 11){
+            startDate = new Date( startDate.setDate(startDate.getDate() + 2) );
+        }else if(startDate.getDay() === 6){
+            startDate = new Date( startDate.setDate(startDate.getDate() + 1) );
+        }else if(startDate.getHours() >= 18){
+            startDate = new Date( startDate.setDate(startDate.getDate() + 1) );
+        }  
 
+        $('#time').html('');    
 
         for(var h in hours){
-            if(parseFloat(h) > date.getHours()){
+            
+            if(startDate.getDay() === 5){
+                
+                if(parseFloat(h) <= 11){
+                    $('#time').append('<option value="'+ h +'">'+ hours[h] +'</option>');
+                } 
+
+            }else if(startDate.getDay() !== today.getDay()){
+
                 $('#time').append('<option value="'+ h +'">'+ hours[h] +'</option>');
-            }                
+
+            }else{
+
+                if(parseFloat(h) > startDate.getHours()){
+                    $('#time').append('<option value="'+ h +'">'+ hours[h] +'</option>');
+                } 
+
+            }
+            
+
         } 
 
         if(!validateServiceDate()){

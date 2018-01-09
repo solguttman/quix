@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.evelt.quix" version="1.0.8" xmlns="http://www.w3.org/ns/widgets" xmlns:android="http://schemas.android.com/apk/res/android" xmlns:gap="http://phonegap.com/ns/1.0">
+<widget id="com.evelt.quix" version="1.0.9" xmlns="http://www.w3.org/ns/widgets" xmlns:android="http://schemas.android.com/apk/res/android" xmlns:gap="http://phonegap.com/ns/1.0">
     <name>Quix</name>
     <description>
         Quix.
@@ -83,10 +83,7 @@
     <plugin name="cordova-plugin-file" spec="~4.3.3" />
     <plugin name="cordova-plugin-media" spec="~2.2.0" />
     <plugin name="cordova-plugin-media-capture" spec="~1.2.0" />
-    <plugin name="cordova-plugin-camera" spec="~2.1.1">
-        <variable name="CAMERA_USAGE_DESCRIPTION" value="App would like to access the camera." />
-        <variable name="PHOTOLIBRARY_USAGE_DESCRIPTION" value="App would like to access the library." />
-    </plugin>
+    <plugin name="cordova-plugin-camera" spec="~2.1.1" />
 
     <config-file platform="ios" parent="NSCameraUsageDescription" overwrite="true">
        <string>App would like to access the camera.</string>
@@ -94,6 +91,10 @@
 
     <config-file platform="ios" parent="NSPhotoLibraryUsageDescription" overwrite="true">
        <string>App would like to access the library.</string>
-    </config-file>    
+    </config-file>
+
+    <config-file platform="ios" parent="NSMicrophoneUsageDescription" overwrite="true">
+       <string>App would like to access the microphone.</string>
+    </config-file>
 
 </widget>
