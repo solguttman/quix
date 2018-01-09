@@ -85,15 +85,15 @@
     <plugin name="cordova-plugin-media-capture" spec="~1.2.0" />
     <plugin name="cordova-plugin-camera" spec="~2.1.1" />
 
-    <config-file platform="ios" parent="NSCameraUsageDescription" mode="add">
+    <config-file platform="ios" parent="NSCameraUsageDescription" mode="replace">
        <string>App would like to access the camera.</string>
     </config-file>
                                         
-    <config-file platform="ios" parent="NSPhotoLibraryUsageDescription" mode="add">
+    <config-file platform="ios" parent="NSPhotoLibraryUsageDescription" mode="replace">
        <string>App would like to access the library.</string>
     </config-file>
 
-    <config-file platform="ios" parent="NSMicrophoneUsageDescription" mode="add">
+    <config-file platform="ios" parent="NSMicrophoneUsageDescription" mode="replace">
        <string>App would like to access the microphone.</string>
     </config-file>
 
