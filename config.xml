@@ -87,6 +87,16 @@
     <plugin name="cordova-plugin-media-capture" spec="~1.2.0" />
     <plugin name="cordova-plugin-camera" spec="~2.1.1" />
 
-    
+    <edit-config target="NSCameraUsageDescription" file="*-Info.plist" mode="merge">
+        <string>App would like to access the camera.</string>
+    </edit-config>
+
+    <edit-config target="NSPhotoLibraryUsageDescription" file="*-Info.plist" mode="merge">
+        <string>App would like to access the library.</string>
+    </edit-config>
+
+    <edit-config target="NSMicrophoneUsageDescription" file="*-Info.plist" mode="merge">
+        <string>App would like to access the microphone.</string>
+    </edit-config>
 
 </widget>
