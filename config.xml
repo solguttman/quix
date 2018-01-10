@@ -8,9 +8,7 @@
         Evelt Team
     </author>
     <content src="index.html" />
-    <config-file parent="/manifest" platform="android">
-        <application android:theme="@android:style/Theme.Light.NoTitleBar" />
-    </config-file>
+    
     <preference name="phonegap-version" value="cli-7.0.1" />
     <preference name="AutoHideSplashScreen" value="false" />
     <preference name="SplashScreenDelay" value="10000" />
@@ -84,6 +82,12 @@
     <plugin name="cordova-plugin-media" spec="~2.2.0" />
     <plugin name="cordova-plugin-media-capture" spec="~1.2.0" />
     <plugin name="cordova-plugin-camera" spec="~2.1.1" />
+
+    <config-file parent="/manifest" platform="android">
+        <application android:theme="@android:style/Theme.Light.NoTitleBar" />
+        <uses-permission android:name="android.permission.RECORD_AUDIO" />
+        <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    </config-file>
 
     <edit-config target="NSCameraUsageDescription" file="*-Info.plist" mode="merge">
         <string>App would like to access the camera.</string>
