@@ -83,9 +83,9 @@
                 $('.files').append('<div class="col s12"><input class="file" id="'+ fileId +'" name="'+ fileId +'" type="text"></div>');
                 $('#' + fileId).uploader({
                     label : '<i class="material-icons">add</i>',
-                    accept : 'image/*'
+                    accept : 'image/*, application/pdf'
                 });
-                $('.ev-uploader input').attr('capture', 'camera');
+                //$('.ev-uploader input').attr('capture', 'camera');
 
             })
             .on('click', '[route-to]', function(){
@@ -163,27 +163,17 @@
     }
 
     // init request route
-    function initRequstPage(){               
+    function initRequstPage(){  
 
         if(typeof Uploader !== 'undefined'){
             $('.file').uploader({
                 label : '<i class="material-icons">camera_alt</i><br>Upload a picture of the issue.',
                 //accept : 'image/*;capture=camera'
-                accept : 'image/*'
+                accept : 'image/*, application/pdf'
             })
-            $('.ev-uploader input').attr('capture', 'camera');
+            //$('.ev-uploader input').attr('capture', 'camera');
         }
-
-        
-            $('.datepicker').attr('min', new Date().getFullYear() +'-'+ ("0" + (new Date().getMonth() + 1)).slice(-2) +'-'+ ("0" + new Date().getDate()).slice(-2) );
-                
-
-        if (!isApp) {
-            $('.datepicker').pickadate({
-                min: true
-            });
-            $('#date_root').appendTo('body');
-        }
+                    
 
         if(document.getElementById('address')){
             if(typeof google === 'undefined'){
@@ -195,7 +185,7 @@
             }
         }
 
-        setupTime();
+        setupDate();        
 
         $('#name').val(getUser().name).change();
         $('#email').val(getUser().email).change();
@@ -254,7 +244,7 @@
             '0': 'Confirmed',            
             '1': 'In progress',
             '2': 'Completed',            
-            '3': 'Customer unresponsive',                    
+            '3': 'Unresponsive',                    
             '4': 'Archived',
         };
 
@@ -296,8 +286,8 @@
                 files,
                 container = $('.request-detail');
 
-                request = JSON.parse(requests)[0];                
-                request.files = JSON.parse(request.files) || [];
+                request = JSON.parse(requests)[0] || {};                
+                request.files = JSON.parse(request.files || '[]');
 
                 $('.request-number').html(request.requestNumber);
 
@@ -305,7 +295,7 @@
                     preview += '<div class="preview-block"><em class="cyan-text text-lighten-2">Description</em><br/>'+ request.description +'</div>';
                 }
 
-                if(request.files.length){
+                if(request.files && request.files.length){
                     preview += '<div class="row file-preview-container">';
                      
                         files = request.files.map(function(file){
@@ -365,18 +355,50 @@
         hideLoader();
     }
 
+    //setup date picker with min date
+    function setupDate(){
+
+    	var startDate =  new Date(),
+            minDate;
+
+        if(startDate.getDay() === 5 && startDate.getHours() >= 11){
+            startDate = new Date( startDate.setDate(startDate.getDate() + 2) );
+        }else if(startDate.getDay() === 6){
+            startDate = new Date( startDate.setDate(startDate.getDate() + 1) );
+        }else if(startDate.getHours() >= 18){
+            startDate = new Date( startDate.setDate(startDate.getDate() + 1) );
+        }        
+
+        minDate = startDate.getFullYear() +'-'+ ("0" + (startDate.getMonth() + 1)).slice(-2) +'-'+ ("0" + startDate.getDate()).slice(-2);
+
+        $('.datepicker').val(minDate).attr('min',  minDate);
+
+        if (!isApp) {
+            $('.datepicker').pickadate({
+                min: startDate,
+                format : 'yyyy-mm-dd'
+            });
+            $('#date_root').appendTo('body');
+        }
+
+        setTimeout(function(){
+        	setupTime();
+        },200)
+
+    }
+
     //setup time dropdown based on date selected
     function setupTime(){
 
         var hours = {
-                "00:00" : "12:00 AM",
-                "01:00" : "01:00 AM",
-                "02:00" : "02:00 AM",
-                "03:00" : "03:00 AM",
-                "04:00" : "04:00 AM",
-                "05:00" : "05:00 AM",
-                "06:00" : "06:00 AM",
-                "07:00" : "07:00 AM",
+                // "00:00" : "12:00 AM",
+                // "01:00" : "01:00 AM",
+                // "02:00" : "02:00 AM",
+                // "03:00" : "03:00 AM",
+                // "04:00" : "04:00 AM",
+                // "05:00" : "05:00 AM",
+                // "06:00" : "06:00 AM",
+                // "07:00" : "07:00 AM",
                 "08:00" : "08:00 AM",
                 "09:00" : "09:00 AM",
                 "10:00" : "10:00 AM",
@@ -388,27 +410,49 @@
                 "16:00" : "04:00 PM",
                 "17:00" : "05:00 PM",
                 "18:00" : "06:00 PM",
-                "19:00" : "07:00 PM",
-                "20:00" : "08:00 PM",
-                "21:00" : "09:00 PM",
-                "22:00" : "10:00 PM",
-                "23:00" : "11:00 PM"
+                // "19:00" : "07:00 PM",
+                // "20:00" : "08:00 PM",
+                // "21:00" : "09:00 PM",
+                // "22:00" : "10:00 PM",
+                // "23:00" : "11:00 PM"
             },
             today = new Date(),
-            date = new Date($('#date').val() || Date.now()),
-            selectedTime = $('#time').val();
+            selectedTime = $('#time').val(),
+			dateVal = ($('#date').val() || $('#date').attr('min')),
+        	startDate =  new Date(dateVal.replace(/-/g, '/')),
+            minDate;
 
-        $('#time').html('');
+        if(startDate.getDay() === 5 && startDate.getHours() >= 11){
+            startDate = new Date( startDate.setDate(startDate.getDate() + 2) );
+        }else if(startDate.getDay() === 6){
+            startDate = new Date( startDate.setDate(startDate.getDate() + 1) );
+        }else if(startDate.getHours() >= 18){
+            startDate = new Date( startDate.setDate(startDate.getDate() + 1) );
+        }  
 
-        if(today.toLocaleDateString() == date.toLocaleDateString()){
-            date = new Date(Date.now());
-        }
-
+        $('#time').html('');    
 
         for(var h in hours){
-            if(parseFloat(h) > date.getHours()){
+            
+            if(startDate.getDay() === 5){
+                
+                if(parseFloat(h) <= 11){
+                    $('#time').append('<option value="'+ h +'">'+ hours[h] +'</option>');
+                } 
+
+            }else if(startDate.getDay() !== today.getDay()){
+
                 $('#time').append('<option value="'+ h +'">'+ hours[h] +'</option>');
-            }                
+
+            }else{
+
+                if(parseFloat(h) > today.getHours()){
+                    $('#time').append('<option value="'+ h +'">'+ hours[h] +'</option>');
+                } 
+
+            }
+            
+
         } 
 
         if(!validateServiceDate()){
@@ -424,7 +468,7 @@
     }
 
     function validateServiceDate(){
-        if($('#date').val() && getEpoch($('#date').val().replace(/-/g, '/') + ' ' + $('#time').val()) <= getEpoch(Date.now())){
+        if( $('#date').val() && getEpoch($('#date').val().replace(/-/g, '/') + ' ' + $('#time').val()) <= getEpoch( Date.now() ) ){
             return false;
         }else{
             return true;

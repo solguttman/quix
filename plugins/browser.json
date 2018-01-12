@@ -72,6 +72,9 @@
     },
     "cordova-plugin-file": {
       "PACKAGE_NAME": "com.evelt.quix"
+    },
+    "cordova-plugin-crosswalk-webview": {
+      "PACKAGE_NAME": "com.evelt.quix"
     }
   },
   "dependent_plugins": {

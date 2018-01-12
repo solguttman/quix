@@ -16,13 +16,15 @@
       "cordova-plugin-camera": {
         "CAMERA_USAGE_DESCRIPTION": "App would like to access the camera.",
         "PHOTOLIBRARY_USAGE_DESCRIPTION": "App would like to access the library."
-      }
+      },
+      "cordova-plugin-crosswalk-webview": {}
     }
   },
   "dependencies": {
     "cordova-browser": "~5.0.1",
+    "cordova-plugin-crosswalk-webview": "^2.3.0",
+    "cordova-plugin-file": "~4.3.3",
     "cordova-plugin-whitelist": "~1.2.1",
-    "onesignal-cordova-plugin": "^2.2.4",
-    "cordova-plugin-file": "~4.3.3"
+    "onesignal-cordova-plugin": "^2.2.4"
   }
 }

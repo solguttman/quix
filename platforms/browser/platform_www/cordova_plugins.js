@@ -653,7 +653,8 @@ module.exports.metadata =
     "cordova-plugin-vibration": "2.1.5",
     "cordova-plugin-whitelist": "1.2.2",
     "phonegap-plugin-push": "2.1.0",
-    "onesignal-cordova-plugin": "2.2.4"
+    "onesignal-cordova-plugin": "2.2.4",
+    "cordova-plugin-crosswalk-webview": "2.3.0"
 }
 // BOTTOM OF METADATA
 });
